@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "index.md",
+                "file": "pages/claude-md-conventions.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "index"
+              "title": "claude-md-conventions"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "index.md",
+                "file": "pages/claude-md-conventions.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for index"
+              "title": "Backlinks for claude-md-conventions"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "index.md",
+                "file": "pages/claude-md-conventions.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from index"
+              "title": "Outgoing links from claude-md-conventions"
             }
           },
           {
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "index.md",
+                "file": "pages/claude-md-conventions.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of index"
+              "title": "Outline of claude-md-conventions"
             }
           }
         ]
@@ -185,6 +185,16 @@
   },
   "active": "489649a841b865f3",
   "lastOpenFiles": [
+    "index.md",
+    "pages/new-project-checklist.md",
+    "pages/vercel-deployment.md",
+    "pages/nextjs-patterns.md",
+    "templates/CLAUDE.md",
+    "templates/AGENTS.md",
+    "templates",
+    "log.md.tmp.24652.1776047354468",
+    "pages/agent-instruction-design.md",
+    "project-planning/ingested-sources.md",
     "pages/code-review-automation.md",
     "SCHEMA.md.tmp.24652.1776040422948",
     "README.md.tmp.24652.1776040403595",
@@ -195,7 +205,6 @@
     "project-planning",
     "raw-sources/follow-on-questions.md",
     "Home.md",
-    "index.md",
     "pages/pulumi-gcp-patterns.md.tmp.24652.1776039286940",
     "pages/linting-setup.md.tmp.24652.1776039210921",
     "README.md",
@@ -203,7 +212,6 @@
     "plans",
     "ingested-sources.md",
     "index.md.tmp.24652.1776038435047",
-    "index.md.tmp.24652.1776038429201",
     "2026-04-12.md",
     "Untitled.canvas"
   ]
