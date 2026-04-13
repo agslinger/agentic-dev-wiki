@@ -177,6 +177,69 @@ Updated the project planning docs to make the intended hosting path explicit: lo
 - `project-planning/neo4j-design-plan.md` — added local-to-Aura progression, CLI operations model, and phase guidance
 - `project-planning/follow-on-questions.md` — refined Neo4j operations questions around local runtime defaults and Aura transition
 
+## [2026-04-12] ingest | Agent instruction design — RPI, QRSPI, RISEN, MAKER
+
+**Sources:** Anthropic best practices, HumanLayer CLAUDE.md guide, QRSPI blog, RPI blog, Cognizant MAKER paper, OpenAI Codex AGENTS.md docs, Promplify framework comparison
+
+**Page created:** `pages/agent-instruction-design.md` — draft (confidence 72)
+
+Key findings:
+- Hard instruction budget: ~100-150 effective instructions after Claude's system prompt (~50)
+- Beyond this limit, adherence degrades silently — no errors, just quiet non-compliance
+- RISEN (Role, Instructions, Steps, End Goal, Narrowing) is the best structure for CLAUDE.md files
+- RPI works for scoped tasks; QRSPI fixes RPI's scale failures (instruction overflow, plan-reading illusion, magic words)
+- QRSPI key insight: Research phase hides the ticket to prevent premature opinions; Design Discussion validates before coding
+- MAKER achieved 1M+ steps with zero errors via atomic decomposition — reinforces "keep tasks small"
+- Enforcement pyramid: linters > hooks > CI > CodeRabbit > CLAUDE.md rules > skills (deterministic before advisory)
+- Context: stay under 40%, fresh sessions at 60%, subagents as context firewalls
+- Anthropic's own #1 recommendation: give Claude verification (tests/screenshots)
+
+## [2026-04-12] create | Next.js template variant + cross-link audit
+
+Reviewed all 18 new wiki pages (TypeScript, React/Tailwind/shadcn, Next.js, Drizzle, pgvector, Vercel AI SDK, model selection, document parsing, Zod 4, Biome, Vercel deployment). Created a second template variant for the Next.js/Vercel stack and added missing cross-links across the wiki.
+
+**Files created:**
+- `templates/nextjs/AGENTS.md` — Next.js/TypeScript strict/React 19/Tailwind/shadcn/Drizzle/pgvector/Vercel AI SDK/Biome
+- `templates/nextjs/CLAUDE.md` — Claude-specific layer for Next.js projects
+- `templates/nextjs/.claude/settings.json` — Biome-aware hooks
+- `templates/nextjs/.claude/hooks/lint-changed.sh` — Biome first, next lint fallback
+- `templates/nextjs/.claude/hooks/test-on-change.sh` — .ts/.tsx aware
+- `templates/nextjs/.claude/hooks/block-destructive.sh` — same as Node.js variant
+- `templates/nextjs/.claude/hooks/quality-gate-reminder.sh` — same as Node.js variant
+- `templates/nextjs/.claude/rules/app-routes.md` — App Router rules (server components, Zod, error boundaries)
+- `templates/nextjs/.claude/rules/components.md` — shadcn/ui, Lucide, Tailwind rules
+- `templates/nextjs/.claude/rules/database.md` — Drizzle schema, migration, pgvector rules
+- `templates/nextjs/.claude/rules/testing.md` — .ts/.tsx test patterns
+
+**Files updated (cross-links added):**
+- `pages/project-templates.md` — now documents both variants side by side
+- `pages/linting-setup.md` — added biome link
+- `pages/testing-setup.md` — added nextjs-testing link
+- `pages/nodejs-patterns.md` — added nextjs-patterns, typescript-strict-mode, zod-4-validation links
+- `pages/biome.md` — added linting-setup, nextjs-patterns links
+- `pages/nextjs-patterns.md` — added nextjs-testing, react-tailwind-shadcn-ui links
+- `pages/document-parsing-stack.md` — added postgres-pgvector, vercel-ai-sdk links
+- `pages/zod-4-validation.md` — added document-parsing-stack link
+- `pages/vercel-ai-sdk.md` — added postgres-pgvector, document-parsing-stack links
+- `pages/react-frontend-patterns.md` — added react-tailwind-shadcn-ui link
+
+## [2026-04-12] create | Project templates — CLAUDE.md, AGENTS.md, hooks, and rules
+
+Created ready-to-copy template files that implement the full guardrail architecture from the wiki.
+
+**Files created:**
+- `templates/AGENTS.md` — shared agent instructions (~80 lines, RISEN structure: project, stack, commands, workflow, quality gates, rules, naming, errors)
+- `templates/CLAUDE.md` — Claude-specific layer (~25 lines, imports AGENTS.md, documents active hooks, adds Claude-specific workflow and prohibitions)
+- `templates/.claude/settings.json` — hook configuration (PostToolUse lint + test, PreToolUse block-destructive, Stop quality-gate-reminder)
+- `templates/.claude/hooks/lint-changed.sh` — runs ESLint on the single changed file after Write/Edit
+- `templates/.claude/hooks/test-on-change.sh` — runs the related test file after source or test changes
+- `templates/.claude/hooks/block-destructive.sh` — blocks rm -rf, DROP TABLE, git push --force, pulumi destroy; prompts for pulumi up
+- `templates/.claude/hooks/quality-gate-reminder.sh` — checks transcript for test/lint runs; reminds if missing when Claude stops
+- `templates/.claude/rules/api-handlers.md` — path-scoped rules for src/**/*.js (zod validation, security headers, thin handlers)
+- `templates/.claude/rules/testing.md` — path-scoped rules for **/*.test.js (AAA pattern, no shared state, supertest over createServer)
+- `templates/.claude/rules/infrastructure.md` — path-scoped rules for infra/** (secrets, IAM, resource protection)
+- `pages/project-templates.md` — wiki page documenting the template architecture and design decisions
+
 ## [2026-04-12] create | Refactor wiki for LLM readability
 
 Refactored the wiki to optimize for fast agent retrieval and shorter page reads.
@@ -194,3 +257,115 @@ Refactored the wiki to optimize for fast agent retrieval and shorter page reads.
 - `pages/security-scanning.md`
 - `pages/code-review-automation.md`
 - `pages/new-project-checklist.md`
+
+## [2026-04-12] create | Add Playwright E2E recommendation
+
+Updated the testing guidance to recommend a layered test stack:
+
+- `Vitest` + `supertest` as the main fast-feedback layer
+- `Playwright` as the browser E2E layer
+- a small smoke suite first, expanded only for high-value flows
+
+**Files updated:**
+- `pages/testing-setup.md`
+
+## [2026-04-12] create | Add Next.js and Vercel pages
+
+Added compact wiki pages derived from common Next.js starter guidance, rewritten as reusable decision-oriented patterns.
+
+**Files created:**
+- `pages/nextjs-patterns.md`
+- `pages/vercel-deployment.md`
+
+**Files updated:**
+- `index.md`
+
+## [2026-04-12] ingest | Official Next.js and Vercel bootstrap guidance
+
+Expanded the Next.js and Vercel pages using official docs so they better answer when these tools are useful for bootstrapping a new app.
+
+**Files updated:**
+- `pages/nextjs-patterns.md` — added official bootstrap defaults, App Router vs Pages Router guidance, package-manager nuance, and `next/font` rationale
+- `pages/vercel-deployment.md` — added official Vercel positioning, CLI workflow, and clearer “when to use” guidance
+- `index.md` — tightened the routing summaries for the new pages
+
+## [2026-04-12] create | Add React and Next.js testing pages
+
+Added compact frontend bootstrap pages to cover React project defaults and Next.js-specific testing guidance.
+
+**Files created:**
+- `pages/react-frontend-patterns.md`
+- `pages/nextjs-testing.md`
+
+**Files updated:**
+- `index.md`
+
+## [2026-04-12] ingest | Full-stack app architecture technology pages
+
+Added source-backed wiki pages for the proposed app architecture stack and how the choices interact with each other.
+
+**Files created:**
+- `pages/typescript-strict-mode.md`
+- `pages/react-tailwind-shadcn-ui.md`
+- `pages/lucide-react-icons.md`
+- `pages/geist-fonts.md`
+- `pages/recharts.md`
+- `pages/markdown-rendering.md`
+- `pages/drizzle-orm.md`
+- `pages/postgres-pgvector.md`
+- `pages/vercel-ai-sdk.md`
+- `pages/claude-bedrock-models.md`
+- `pages/openai-model-selection.md`
+- `pages/document-parsing-stack.md`
+- `pages/zod-4-validation.md`
+- `pages/biome.md`
+
+**Files updated:**
+- `index.md`
+
+## [2026-04-12] create | Encourage smaller passing development loops
+
+Updated the wiki and template guidance to favor the smallest possible passing slices, with narrow tests run immediately after each small change.
+
+**Files updated:**
+- `pages/testing-setup.md`
+- `pages/project-templates.md`
+- `templates/AGENTS.md`
+- `templates/CLAUDE.md`
+- `templates/.claude/settings.json`
+- `templates/.claude/rules/testing.md`
+- `templates/nextjs/AGENTS.md`
+- `templates/nextjs/CLAUDE.md`
+- `templates/nextjs/.claude/settings.json`
+- `templates/nextjs/.claude/rules/components.md`
+- `templates/nextjs/.claude/rules/app-routes.md`
+
+## [2026-04-12] create | Add dummy-workflow-first guidance
+
+Updated the wiki and templates to explicitly encourage a human-style workflow: get one simplified happy path working end to end before expanding it across the larger codebase.
+
+**Files updated:**
+- `pages/testing-setup.md`
+- `pages/project-templates.md`
+- `templates/AGENTS.md`
+- `templates/CLAUDE.md`
+- `templates/.claude/rules/testing.md`
+- `templates/nextjs/AGENTS.md`
+- `templates/nextjs/CLAUDE.md`
+- `templates/nextjs/.claude/rules/components.md`
+- `templates/nextjs/.claude/rules/app-routes.md`
+
+## [2026-04-12] create | Prioritize proving slices over smallest slices
+
+Refined the guidance to emphasize the simplest slice that proves the workflow works, not merely the smallest possible change.
+
+**Files updated:**
+- `pages/testing-setup.md`
+- `pages/project-templates.md`
+- `templates/AGENTS.md`
+- `templates/CLAUDE.md`
+- `templates/.claude/rules/testing.md`
+- `templates/nextjs/AGENTS.md`
+- `templates/nextjs/CLAUDE.md`
+- `templates/nextjs/.claude/rules/components.md`
+- `templates/nextjs/.claude/rules/app-routes.md`

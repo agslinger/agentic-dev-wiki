@@ -1,8 +1,27 @@
 {
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -ExecutionPolicy Bypass -File \"$CLAUDE_PROJECT_DIR/.claude/hooks/wiki-lint-reminder.ps1\"",
+            "timeout": 10,
+            "statusMessage": "Checking wiki maintenance reminders"
+          }
+        ]
+      }
+    ]
+  },
   "permissions": {
     "allow": [
       "WebFetch",
-      "WebSearch"
+      "WebSearch",
+      "Bash(mkdir -p c:/Users/agsli/GitHub/agentic-dev-wiki/templates/.claude/hooks)",
+      "Bash(mkdir -p c:/Users/agsli/GitHub/agentic-dev-wiki/templates/.claude/rules)",
+      "Bash(mkdir -p c:/Users/agsli/GitHub/agentic-dev-wiki/templates/nextjs/.claude/hooks)",
+      "Bash(mkdir -p c:/Users/agsli/GitHub/agentic-dev-wiki/templates/nextjs/.claude/rules)",
+      "Bash(pwsh ./scripts/wiki-lint.ps1)"
     ]
   }
 }

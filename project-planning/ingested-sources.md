@@ -47,6 +47,13 @@
 | https://docs.coderabbit.ai/reference/configuration | 2026-04-12 | `code-review-automation.md` | Medium — config schema updated with new features |
 | https://docs.coderabbit.ai/guides/review-instructions | 2026-04-12 | `code-review-automation.md` | Low — guide content stable |
 | https://docs.coderabbit.ai/getting-started/quickstart | 2026-04-12 | `code-review-automation.md` | Low — quickstart stable |
+| https://code.claude.com/docs/en/best-practices | 2026-04-12 | `agent-instruction-design.md` | Low — official Anthropic docs |
+| https://www.humanlayer.dev/blog/writing-a-good-claude-md | 2026-04-12 | `agent-instruction-design.md` | Medium — blog post |
+| https://alexlavaee.me/blog/from-rpi-to-qrspi/ | 2026-04-12 | `agent-instruction-design.md` | Static — blog post |
+| https://patrickarobinson.com/blog/introducing-rpi-strategy/ | 2026-04-12 | `agent-instruction-design.md` | Static — blog post |
+| https://www.cognizant.com/us/en/ai-lab/blog/maker | 2026-04-12 | `agent-instruction-design.md` | Static — research paper |
+| https://developers.openai.com/codex/guides/agents-md | 2026-04-12 | `agent-instruction-design.md` | Low — OpenAI docs |
+| https://promplify.ai/blog/prompt-engineering-frameworks-compared/ | 2026-04-12 | `agent-instruction-design.md` | Low — comparison article |
 
 ---
 

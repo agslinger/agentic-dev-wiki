@@ -66,8 +66,3 @@
 | Husky | https://typicode.github.io/husky/ | Git hooks manager |
 | OWASP Node.js cheat sheet | https://cheatsheetseries.owasp.org/cheatsheets/Nodejs_Security_Cheat_Sheet.html | Security hardening for Node.js |
 
-## Reference Repositories
-
-| Source | URL | Notes |
-|--------|-----|-------|
-| IaC-test-app | https://github.com/agslinger/IaC-test-app | Origin repo — audited for initial wiki content |
