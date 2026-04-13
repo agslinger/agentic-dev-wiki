@@ -1,88 +1,91 @@
 # AGENTS.md
 
-> Shared agent instructions. Read by both Claude Code (`@AGENTS.md` import) and OpenAI Codex (native).
-> Keep this under 80 lines. Put topic-specific rules in `.claude/rules/`.
+> Shared agent instructions. Read by both Claude Code (`@AGENTS.md` import) and OpenAI Codex (natively).
+> Keep this concise. Put path-specific rules in `.claude/rules/`.
 
 ## Project
 
-Node.js 22 service on GCP Cloud Functions v2. Pulumi YAML for infrastructure.
+Default stack: Next.js App Router with TypeScript strict mode. Full-stack web app with React 19 frontend, Drizzle ORM + PostgreSQL + pgvector, Vercel AI SDK, Zod validation, Biome, Vitest, and Playwright.
 
 ```
-src/           ← application code (ESM, own package.json)
-  index.js     ← entry point — calls createServer().listen(PORT)
-  app.js       ← exports createServer() — all routing and middleware
-infra/         ← Pulumi IaC (own package.json, separate deps)
+app/           ← routes, layouts, server actions, route handlers
+components/    ← UI components (shadcn/ui + custom)
+lib/           ← shared utilities, AI clients, config
+db/            ← Drizzle schema, migrations, client
+public/        ← static assets
 ```
-
-App and infra are independent Node.js projects. Never mix their dependencies.
 
 ## Stack
 
-- Runtime: Node.js 22, ESM (`"type": "module"`)
-- Test: Vitest + supertest (HTTP) + Playwright (E2E smoke)
-- Lint: ESLint flat config + Prettier
-- Pre-commit: Husky + lint-staged + Gitleaks
-- IaC: Pulumi YAML, GCP provider
-- CI: GitHub Actions (lint → test → deploy)
-- Review: CodeRabbit
+- Framework: Next.js App Router
+- Language: TypeScript strict mode
+- UI: React 19, Tailwind CSS 4, shadcn/ui, Lucide, Geist
+- Data: Drizzle ORM + PostgreSQL + pgvector
+- AI: Vercel AI SDK + Claude (Bedrock) + OpenAI
+- Validation: Zod 4
+- Lint/format: Biome
+- Test: Vitest + Playwright smoke
+- Deploy: Vercel by default
+
+## Build Order
+
+Implement in proving stages. Do not jump ahead before the current stage works.
+
+1. Scaffold app, TypeScript strict mode, Biome, and one route
+2. Add Zod validation and one passing unit test
+3. Add one simple UI path with Tailwind + shadcn/ui
+4. Add one database schema and one proven read/write path
+5. Add one AI flow on a dummy happy path
+6. Add one Playwright smoke test for the main workflow
+7. Add deployment and CI only after the app path is already proven locally
 
 ## Commands
 
 ```bash
-npm test                # Vitest — single run
-npm run test:watch      # Vitest — watch mode
-npm run test:coverage   # Vitest — with coverage thresholds
-npm run test:e2e        # Playwright — browser smoke tests
-npm run lint            # ESLint
-npm run lint:fix        # ESLint --fix
-npm run format:check    # Prettier --check
-npm run format          # Prettier --write
+npm run dev
+npm run build
+npm run lint
+npm run format
+npm test
+npm run test:coverage
+npm run test:e2e
+npx drizzle-kit generate
+npx drizzle-kit migrate
 ```
 
 ## Workflow
 
-1. Read relevant source files before changing them.
-2. Make the simplest useful change that can prove the workflow works.
-3. Get one simplified happy-path workflow working before broadening the implementation.
-4. Run the narrowest relevant test immediately after that small change.
-5. Fix failures before expanding the scope.
-6. Run `npm run lint` and broader checks at slice boundaries and before committing.
-7. Use plan mode for changes touching more than 3 files.
-8. Commit each coherent passing slice with a message explaining *why*, not just *what*.
+1. Read the relevant files first.
+2. Build the simplest slice that proves the workflow works.
+3. Prove one dummy happy path end to end before generalizing.
+4. Run the narrowest relevant test immediately after each small change.
+5. Fix failures before broadening scope.
+6. Run lint, build, and broader checks at proving boundaries and before commit.
+7. Commit each coherent proving slice separately.
 
-## Quality Gates
+## Decision Points
 
-All of these must pass before a PR is ready:
+- If an option has real tradeoffs, ask the user one concise question before committing.
+- Prefer safer defaults when choosing between options.
+- Prefer stronger guardrails over lower setup effort.
+- Prefer runtime validation, strict typing, and deterministic checks by default.
 
-- `npm test` passes with ≥70% line and branch coverage
-- `npm run lint` exits clean (zero errors)
-- `npm run format:check` exits clean
-- No secrets in source (Gitleaks pre-commit is active)
+Ask before deciding things like:
+
+- deployment target if the repo must fit an existing cloud standard
+- database hosting/provider choice
+- whether pgvector is needed now or later
+- which model vendor is allowed or preferred
 
 ## Rules
 
-- Use `import`, never `require`.
-- Use `node:` protocol for built-in modules (`import fs from 'node:fs'`).
-- Validate all external inputs with zod at the handler boundary.
-- Never expose stack traces or internal paths in HTTP error responses.
-- Never hardcode secrets — use env vars or `pulumi config set --secret`.
-- Never modify files under `infra/migrations/` without explicit approval.
-- Keep route handlers thin — delegate to service layer functions.
-- Export `createServer()` from `app.js`; only call `.listen()` in `index.js`.
-- Prefer 1 proving slice over 1 large unfinished feature.
-- If work grows before anything is proven, stop and simplify the slice until it proves the workflow.
-- Prove one dummy end-to-end path before applying the pattern across the wider codebase.
+- TypeScript strict mode is mandatory.
+- Validate all external inputs and AI outputs with Zod.
+- Prefer server components; add `"use client"` only when required.
+- Use shadcn/ui before inventing custom component primitives.
+- Use Lucide for icons; do not mix icon libraries.
+- Never expose stack traces or internal paths in responses.
+- Never hardcode secrets.
+- Never modify migration files retroactively without explicit approval.
+- Prefer one proving slice over one large unfinished feature.
 
-## Naming
-
-- Files: `kebab-case.js`
-- Variables and functions: `camelCase`
-- Classes: `PascalCase`
-- Constants: `UPPER_SNAKE_CASE`
-- Test files: `*.test.js` co-located with source
-
-## Error Handling
-
-- Operational errors (invalid input, not found): return appropriate HTTP status, generic message.
-- Catastrophic errors (uncaught exception): log full error, then `process.exit(1)`.
-- Never resume after an uncaught exception.

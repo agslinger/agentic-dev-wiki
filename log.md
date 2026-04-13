@@ -369,3 +369,23 @@ Refined the guidance to emphasize the simplest slice that proves the workflow wo
 - `templates/nextjs/CLAUDE.md`
 - `templates/nextjs/.claude/rules/components.md`
 - `templates/nextjs/.claude/rules/app-routes.md`
+
+## [2026-04-12] create | Unify templates into one staged stack
+
+Combined the two template variants into one recommended default stack with staged implementation order and explicit user-question checkpoints for meaningful tradeoffs.
+
+**Files updated:**
+- `pages/project-templates.md` — now documents one canonical template stack, staged rollout, and user-question points
+- `templates/AGENTS.md`
+- `templates/CLAUDE.md`
+- `templates/.claude/settings.json`
+- `templates/.claude/hooks/lint-changed.sh`
+- `templates/.claude/hooks/test-on-change.sh`
+- `templates/.claude/rules/app-routes.md`
+- `templates/.claude/rules/components.md`
+- `templates/.claude/rules/database.md`
+- `templates/.claude/rules/testing.md`
+
+**Files removed from canonical template:**
+- `templates/.claude/rules/api-handlers.md`
+- `templates/.claude/rules/infrastructure.md`

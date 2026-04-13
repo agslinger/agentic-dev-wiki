@@ -19,40 +19,47 @@ sources:
 
 ## Default Recommendation
 
-- Start from the template variant closest to the real stack.
+- Start from the unified default template in `templates/`.
 - Keep `AGENTS.md` as the shared core and `CLAUDE.md` as the thin Claude-specific layer.
 - Use hooks for deterministic enforcement and rules for path-scoped guidance.
 - Follow the simplest proving-slice workflow from the templates instead of broad first-pass rewrites.
+- Implement the stack in stages so each layer is proven before the next is added.
 
 ## Use This Pattern
 
-## Two Template Variants
+## Canonical Template Stack
 
-| Variant | Path | Stack |
-|---|---|---|
-| **Node.js / GCP** | `templates/` | Node.js 22, native http, Pulumi YAML, GCP Cloud Functions, ESLint + Prettier |
-| **Next.js / Vercel** | `templates/nextjs/` | Next.js App Router, TypeScript strict, React 19, Tailwind + shadcn/ui, Drizzle + Postgres + pgvector, Biome, Vercel AI SDK |
+The recommended default stack is:
 
-Both share the same architecture: AGENTS.md core + thin CLAUDE.md + deterministic hooks + path-scoped rules. They differ in stack context, commands, rules, and which linter the hooks invoke.
+- Next.js App Router
+- TypeScript strict mode
+- React 19
+- Tailwind CSS 4 + shadcn/ui + Lucide + Geist
+- Drizzle + PostgreSQL + pgvector
+- Vercel AI SDK + model providers behind explicit policy
+- Zod 4
+- Biome
+- Vitest + Playwright smoke
+- Vercel by default unless user constraints say otherwise
 
-## What Is In Each Variant
+## What Is In The Template
 
 ```
-templates/             (Node.js / GCP)      templates/nextjs/       (Next.js / Vercel)
-├── AGENTS.md                               ├── AGENTS.md
-├── CLAUDE.md                               ├── CLAUDE.md
-└── .claude/                                └── .claude/
-    ├── settings.json                           ├── settings.json
-    ├── hooks/                                  ├── hooks/
-    │   ├── lint-changed.sh  (ESLint)           │   ├── lint-changed.sh  (Biome → next lint fallback)
-    │   ├── test-on-change.sh                   │   ├── test-on-change.sh (.ts/.tsx aware)
-    │   ├── block-destructive.sh                │   ├── block-destructive.sh
-    │   └── quality-gate-reminder.sh            │   └── quality-gate-reminder.sh
-    └── rules/                                  └── rules/
-        ├── api-handlers.md  (src/**/*.js)          ├── app-routes.md    (app/**/*.ts{x})
-        ├── testing.md       (**/*.test.js)         ├── components.md    (components/**/*.tsx)
-        └── infrastructure.md (infra/**)            ├── database.md      (db/**)
-                                                    └── testing.md       (**/*.test.ts{x})
+templates/
+├── AGENTS.md
+├── CLAUDE.md
+└── .claude/
+    ├── settings.json
+    ├── hooks/
+    │   ├── lint-changed.sh
+    │   ├── test-on-change.sh
+    │   ├── block-destructive.sh
+    │   └── quality-gate-reminder.sh
+    └── rules/
+        ├── app-routes.md
+        ├── components.md
+        ├── database.md
+        └── testing.md
 ```
 
 ## How The Pieces Fit Together
@@ -60,13 +67,15 @@ templates/             (Node.js / GCP)      templates/nextjs/       (Next.js / V
 ```
 AGENTS.md (~80 lines, shared by Claude + Codex)
   ├─ project context, stack, commands
-  ├─ workflow: smallest-slice-first, test immediately, commit each passing slice
+  ├─ workflow: simplest proving slice first, test immediately, commit each proving slice
   ├─ quality gates
-  └─ hard rules, naming, error handling
+  ├─ build order by stage
+  └─ hard rules, naming, decision points
         │
 CLAUDE.md (~25 lines, Claude-specific)
   ├─ @AGENTS.md import
-  ├─ Claude habits: subagents, /clear, plan mode, dummy-happy-path-first
+  ├─ Claude habits: subagents, /clear, dummy-happy-path-first
+  ├─ ask-the-user rule for meaningful tradeoffs
   ├─ documents which hooks are active
   └─ explicit prohibitions
         │
@@ -103,20 +112,12 @@ The intended expansion pattern is:
 
 ## Using The Templates
 
-Choose the variant matching your stack, then copy:
+Copy the unified template into a new project:
 
 ```bash
-# Node.js / GCP variant
 cp templates/AGENTS.md /path/to/new-project/
 cp templates/CLAUDE.md /path/to/new-project/
 cp -r templates/.claude /path/to/new-project/
-
-# Next.js / Vercel variant
-cp templates/nextjs/AGENTS.md /path/to/new-project/
-cp templates/nextjs/CLAUDE.md /path/to/new-project/
-cp -r templates/nextjs/.claude /path/to/new-project/
-
-# Both: make hooks executable
 chmod +x /path/to/new-project/.claude/hooks/*.sh
 ```
 
@@ -124,18 +125,51 @@ Then customise:
 
 1. Update `AGENTS.md` project section with the actual project description
 2. Update commands to match real `package.json` scripts
-3. Adjust path-scoped rules for the actual directory layout
-4. Add project-specific rules to `CLAUDE.md` prohibitions
-5. Test each hook by triggering its event manually
+3. Remove stages the project does not need yet, but keep the order
+4. Adjust path-scoped rules for the actual directory layout
+5. Add project-specific rules to `CLAUDE.md` prohibitions
+6. Test each hook by triggering its event manually
 
 ## Commands / Config
 
 Typical setup steps:
 
-- copy the matching template variant
+- copy the unified template
 - make hooks executable
 - update commands to match the real project
 - test hooks manually before relying on them
+
+## Staged Build Order
+
+The template is intentionally layered. Implement in this order:
+
+1. strict TypeScript, Biome, and one route
+2. Zod validation and one passing unit test
+3. one UI path with Tailwind + shadcn/ui
+4. one database schema and one proven read/write path
+5. one AI flow on a dummy happy path
+6. one Playwright smoke test
+7. deploy and CI
+
+Each stage should be proven before the next is added.
+
+## User Questions
+
+Where there are real options, the agent should ask the user one concise question before committing.
+
+Ask about:
+
+- deployment target if the org already has a cloud standard
+- database hosting/provider choice
+- whether pgvector is needed now or later
+- which model vendor is allowed or preferred
+
+Default toward:
+
+- stricter typing
+- more runtime validation
+- stronger deterministic guardrails
+- simpler safe workflows before broader automation
 
 ## Design Decisions
 

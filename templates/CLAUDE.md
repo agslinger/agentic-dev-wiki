@@ -4,28 +4,24 @@
 
 ## Claude Code
 
-- Use subagents for codebase exploration — keep main context clean.
-- Use `/clear` between unrelated tasks.
-- Start a fresh session when context exceeds ~60%.
-- For features touching >3 files, enter plan mode first.
 - Work in the simplest passing slice that proves something works.
-- Prefer a dummy happy path first: one simplified workflow that proves the design end to end.
+- Prefer one dummy happy path first: one simplified route or user flow that proves the design end to end.
 - After each small change, run the narrowest relevant test before continuing.
-- After implementing, verify your own work — run tests, check lint, read the diff.
-- Commit after each coherent passing slice instead of batching unrelated work.
+- If an architectural choice has non-obvious tradeoffs, ask the user a concise question before committing.
+- Default to the safer, more strongly guarded option when the user has no stated preference.
+- After implementing, verify your own work: run tests, lint, build, and read the diff.
+- Commit after each coherent proving slice instead of batching unrelated work.
 
 ## Hooks Active
 
-These run automatically — you do not need to duplicate their behavior:
-
-- **PostToolUse (Write|Edit)**: auto-lint changed files
-- **PostToolUse (Write|Edit)**: auto-test related files to encourage tight loops
-- **PreToolUse (Bash)**: blocks `rm -rf`, `DROP TABLE`, `DELETE FROM`
-- **Pre-commit (Husky)**: Gitleaks + lint-staged
+- **PostToolUse (Write|Edit)**: lint changed files
+- **PostToolUse (Write|Edit)**: run the smallest relevant related test
+- **PreToolUse (Bash)**: block destructive commands
+- **Pre-commit**: Gitleaks + project-specific staged checks
 
 ## Do Not
 
-- Do not suppress lint or test errors to make the build pass.
-- Do not add `// eslint-disable` or `// @ts-ignore` without a comment explaining why.
-- Do not commit `.env`, credentials, or key files.
-- Do not run `pulumi up` without an explicit request.
+- Do not suppress lint, test, or type errors to make progress look real.
+- Do not broaden a pattern across the codebase before one simple version works end to end.
+- Do not use `any` where a narrower type or `unknown` would preserve guardrails.
+- Do not add dependencies or infra choices silently when a user decision is materially involved.

@@ -44,7 +44,7 @@
             "type": "command",
             "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/quality-gate-reminder.sh",
             "timeout": 10,
-            "statusMessage": "Checking for a recent passing slice"
+            "statusMessage": "Checking for a recent proving slice"
           }
         ]
       }
