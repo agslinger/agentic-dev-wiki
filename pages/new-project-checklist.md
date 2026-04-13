@@ -10,7 +10,7 @@ sources: []
 
 # New Project Bootstrap Checklist
 
-> **Status: stub** — items drawn from IaC-test-app gap analysis. Expand as wiki pages reach `complete` status.
+> **Status: stub** — items drawn from wiki page synthesis. Expand as wiki pages reach `complete` status.
 > Work through this top-to-bottom when starting a new project.
 
 ---
@@ -76,6 +76,15 @@ sources: []
 - [ ] Enable branch protection: require CI to pass before merge
 - [ ] See [cicd-github-actions](cicd-github-actions.md) for workflow templates
 
+## 7b. AI Code Review (CodeRabbit)
+
+- [ ] Install CodeRabbit GitHub App — grant access to the new repo
+- [ ] Add `.coderabbit.yaml` at repo root with `profile: assertive` and path instructions
+- [ ] Point `knowledge_base.code_guidelines.filePatterns` at `CLAUDE.md`
+- [ ] Enable `slop_detection` if using agents that produce high PR volume
+- [ ] Open a test PR and verify CodeRabbit posts a review
+- [ ] See [code-review-automation](code-review-automation.md) for full config
+
 ## 8. AI Agent Configuration
 
 - [ ] Update `AGENTS.md` / `CLAUDE.md` with project-specific commands and conventions
@@ -103,10 +112,11 @@ sources: []
 
 | Page | Status | Blocks checklist section |
 |------|--------|--------------------------|
-| [claude-md-conventions](claude-md-conventions.md) | stub | Section 1, 8 |
-| [claude-code-hooks](claude-code-hooks.md) | stub | Section 8 |
-| [security-scanning](security-scanning.md) | stub | Section 3, 9 |
-| [linting-setup](linting-setup.md) | stub | Section 4 |
-| [testing-setup](testing-setup.md) | stub | Section 5 |
-| [pulumi-gcp-patterns](pulumi-gcp-patterns.md) | stub | Section 6 |
-| [cicd-github-actions](cicd-github-actions.md) | stub | Section 7 |
+| [claude-md-conventions](claude-md-conventions.md) | draft | Section 1, 8 |
+| [claude-code-hooks](claude-code-hooks.md) | draft | Section 8 |
+| [security-scanning](security-scanning.md) | draft | Section 3, 9 |
+| [linting-setup](linting-setup.md) | draft | Section 4 |
+| [testing-setup](testing-setup.md) | draft | Section 5 |
+| [pulumi-gcp-patterns](pulumi-gcp-patterns.md) | draft | Section 6 |
+| [cicd-github-actions](cicd-github-actions.md) | draft | Section 7 |
+| [code-review-automation](code-review-automation.md) | draft | Section 7b |

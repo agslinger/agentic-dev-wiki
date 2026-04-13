@@ -1,7 +1,8 @@
 # CLAUDE.md — Agentic Dev Wiki
 
-This repo is a persistent knowledge base following the Karpathy LLM Wiki pattern.
-It stores best-practice patterns for AI-driven development (Node.js, Pulumi/GCP, CI/CD, testing, security).
+This repo is a persistent knowledge base for **high-quality vibe coding** — the guardrails, tooling, and agent configuration that make AI-assisted development reliable without constant human supervision.
+
+The wiki documents seven layers of guardrails: agent structure (CLAUDE.md/hooks), code quality (ESLint/Prettier), correctness (testing), security (Gitleaks/OWASP), infrastructure (Pulumi/GCP), CI/CD (GitHub Actions), and code review (CodeRabbit). A project bootstrapped from this wiki has all layers in place from day one.
 
 **You maintain this wiki.** Humans source material. You ingest, synthesise, cross-reference, and keep it current.
 
@@ -19,11 +20,13 @@ It stores best-practice patterns for AI-driven development (Node.js, Pulumi/GCP,
 
 ### Ingest
 Process new source material (URL, doc, experiment):
-1. Fetch and read the source
-2. Identify which pages in `index.md` it updates — read those pages
-3. Update or create pages with sourced facts + confidence scores
-4. Update `index.md` if new pages were created
-5. Append to `log.md`: `## [YYYY-MM-DD] ingest | <source title>`
+1. **Check `ingested-sources.md` first** — if the URL was ingested within the last 90 days, skip re-fetching unless the user explicitly asks to refresh it
+2. Fetch and read the source
+3. Identify which pages in `index.md` it updates — read those pages
+4. Update or create pages with sourced facts + confidence scores
+5. Update `index.md` if new pages were created
+6. **Update `ingested-sources.md`** — move the URL from "not yet ingested" to the ingested table, or add it if new
+7. Append to `log.md`: `## [YYYY-MM-DD] ingest | <source title>`
 
 ### Query
 Answer a question about a project's setup:
@@ -68,6 +71,7 @@ All source URLs are in `raw-sources/sources.md`.
 - Confidence: 0–30 stub · 31–60 draft · 61–85 solid · 86–100 verified
 - Never delete content — supersede with strikethrough + note
 - `raw-sources/sources.md` is human-only — never modify it
+- `ingested-sources.md` is agent-maintained — update it after every Ingest operation
 - Always update `log.md` after any write operation
 
 ---

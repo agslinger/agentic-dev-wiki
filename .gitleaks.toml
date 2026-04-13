@@ -1,0 +1,10 @@
+title = "agentic-dev-wiki Gitleaks config"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Allow documented example patterns in the security scanning page"
+paths = [
+  '''(^|[\\/])pages[\\/]security-scanning\.md$''',
+]

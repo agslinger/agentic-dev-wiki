@@ -6,6 +6,20 @@ This wiki stores compiled knowledge about AI-driven development workflows, tooli
 
 Knowledge is compiled once and kept current — not re-synthesised on every query.
 
+### Design philosophy: vibe coding with guardrails
+
+"Vibe coding" — directing an AI agent to write most of the code — is only sustainable if quality doesn't erode over time. This wiki documents the **layered guardrail system** that makes it work:
+
+1. **Agent structure** — CLAUDE.md conventions, Claude Code hooks, auto memory
+2. **Code quality** — ESLint flat config, Prettier, lint-staged pre-commit hooks
+3. **Correctness** — Vitest / node:test, supertest HTTP tests, coverage thresholds
+4. **Security** — Gitleaks pre-commit, OWASP Node.js patterns, npm audit in CI
+5. **Infrastructure** — Pulumi YAML patterns, GCP IAM, Cloud Functions conventions
+6. **CI/CD** — GitHub Actions (lint + test + deploy), Workload Identity Federation
+7. **Code review** — CodeRabbit AI review on every PR (second AI perspective, slop detection)
+
+A project bootstrapped from this wiki has all seven layers active from day one. The coding agent operates within those constraints — producing code that holds up without constant supervision.
+
 ---
 
 ## Entity Types

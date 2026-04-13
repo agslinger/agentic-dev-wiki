@@ -5,40 +5,43 @@
 
 Last updated: 2026-04-12
 
+> **Design philosophy:** This wiki documents the guardrail stack for high-quality vibe coding — agent structure, code quality, correctness, security, infrastructure, CI/CD, and AI code review. A project bootstrapped here has all seven layers active from day one.
+
 ---
 
 ## AI Agent Configuration
 
 | Page | Summary | Status | Tags |
 |------|---------|--------|------|
-| [claude-md-conventions](pages/claude-md-conventions.md) | Conventions for writing CLAUDE.md and AGENTS.md files that work well with Claude Code | stub | `claude-code` `ai-agent` `agents-md` |
-| [claude-code-hooks](pages/claude-code-hooks.md) | Claude Code hook types, event triggers, and automation patterns | stub | `claude-code` `ai-agent` `hooks` |
+| [claude-md-conventions](pages/claude-md-conventions.md) | CLAUDE.md file placement, load order, recommended sections, token budget, .claude/rules/, AGENTS.md import pattern | draft | `claude-code` `ai-agent` `agents-md` |
+| [claude-code-hooks](pages/claude-code-hooks.md) | All hook event types, settings.json schema, exit codes, JSON output format, env vars, and common patterns (lint, block-rm, notify) | draft | `claude-code` `ai-agent` `hooks` |
 
 ## Node.js Application Patterns
 
 | Page | Summary | Status | Tags |
 |------|---------|--------|------|
-| [nodejs-patterns](pages/nodejs-patterns.md) | Node.js project structure, conventions, and common patterns | stub | `nodejs` `javascript` |
-| [linting-setup](pages/linting-setup.md) | ESLint and Prettier setup for Node.js projects | stub | `nodejs` `linting` `eslint` `prettier` |
-| [testing-setup](pages/testing-setup.md) | Unit and integration testing setup for Node.js (Jest/Vitest) | stub | `nodejs` `testing` `jest` `vitest` |
+| [nodejs-patterns](pages/nodejs-patterns.md) | Component-based structure, ESM vs CJS, config validation, error handling, graceful shutdown, security headers, Docker best practices | draft | `nodejs` `javascript` |
+| [linting-setup](pages/linting-setup.md) | ESLint flat config (eslint.config.js), Prettier options, eslint-config-prettier, Husky + lint-staged pre-commit hook | draft | `nodejs` `linting` `eslint` `prettier` |
+| [testing-setup](pages/testing-setup.md) | Vitest setup (ESM-native, Jest-compatible), supertest HTTP testing, mocking GCP clients, coverage thresholds | draft | `nodejs` `testing` `jest` `vitest` |
 
 ## Infrastructure as Code
 
 | Page | Summary | Status | Tags |
 |------|---------|--------|------|
-| [pulumi-gcp-patterns](pages/pulumi-gcp-patterns.md) | Pulumi YAML patterns for GCP: Cloud Functions, Storage, BigQuery, IAM | stub | `pulumi` `iac` `gcp` `nodejs` |
+| [pulumi-gcp-patterns](pages/pulumi-gcp-patterns.md) | Pulumi YAML format, GCP provider resource types, Cloud Functions v2 full pattern (SA, bucket, function, IAM), supported Node.js runtimes, stack backends | draft | `pulumi` `iac` `gcp` `nodejs` `serverless` |
 
-## CI/CD & Automation
+## CI/CD & Code Review
 
 | Page | Summary | Status | Tags |
 |------|---------|--------|------|
-| [cicd-github-actions](pages/cicd-github-actions.md) | GitHub Actions workflows for lint, test, and Pulumi deploy | stub | `cicd` `github-actions` `automation` |
+| [cicd-github-actions](pages/cicd-github-actions.md) | CI workflow (lint+test), Pulumi deploy workflow, GCP Workload Identity Federation OIDC setup, pulumi/actions@v6 reference, workflow syntax reference | draft | `cicd` `github-actions` `automation` `pulumi` `gcp` |
+| [code-review-automation](pages/code-review-automation.md) | CodeRabbit AI PR review — installation, .coderabbit.yaml config, path-specific instructions, slop detection, integration with CLAUDE.md, position in the guardrail stack | draft | `cicd` `github-actions` `automation` `ai-agent` `code-review` |
 
 ## Security
 
 | Page | Summary | Status | Tags |
 |------|---------|--------|------|
-| [security-scanning](pages/security-scanning.md) | Secret scanning with Gitleaks — pre-commit hooks and custom rules | stub | `security` `secrets` `gitleaks` `nodejs` |
+| [security-scanning](pages/security-scanning.md) | Gitleaks installation, .gitleaks.toml config, allowlisting, pre-commit/GitHub Actions integration, npm audit, dependency scanning, Pulumi encrypted secrets | draft | `security` `secrets` `gitleaks` `nodejs` `cicd` |
 
 ## Project Bootstrapping
 
