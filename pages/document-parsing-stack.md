@@ -57,3 +57,5 @@ Key design rule:
 
 - [zod-4-validation](zod-4-validation.md)
 - [openai-model-selection](openai-model-selection.md)
+- [postgres-pgvector](postgres-pgvector.md) — parsed content stored with embeddings
+- [vercel-ai-sdk](vercel-ai-sdk.md) — AI enrichment of parsed content

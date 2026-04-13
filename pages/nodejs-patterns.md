@@ -98,6 +98,9 @@ export function createServer() {
 
 ## Related Pages
 
+- [nextjs-patterns](nextjs-patterns.md) — Next.js-specific patterns for App Router projects
+- [typescript-strict-mode](typescript-strict-mode.md) — strict typing for Node.js services
+- [zod-4-validation](zod-4-validation.md) — runtime validation at service boundaries
 - [testing-setup](testing-setup.md)
 - [linting-setup](linting-setup.md)
 - [security-scanning](security-scanning.md)

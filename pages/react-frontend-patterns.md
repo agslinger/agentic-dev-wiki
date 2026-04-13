@@ -68,5 +68,6 @@ Bootstrap docs should quickly answer:
 ## Related Pages
 
 - [nextjs-patterns](nextjs-patterns.md)
+- [react-tailwind-shadcn-ui](react-tailwind-shadcn-ui.md) — specific UI stack choice
 - [testing-setup](testing-setup.md)
 - [vercel-deployment](vercel-deployment.md)

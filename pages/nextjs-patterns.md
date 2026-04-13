@@ -96,6 +96,8 @@ Useful bootstrap decisions to confirm early:
 
 ## Related Pages
 
+- [nextjs-testing](nextjs-testing.md) — Vitest + Playwright for Next.js
+- [react-tailwind-shadcn-ui](react-tailwind-shadcn-ui.md) — UI layer for Next.js apps
 - [testing-setup](testing-setup.md)
 - [cicd-github-actions](cicd-github-actions.md)
 - [vercel-deployment](vercel-deployment.md)

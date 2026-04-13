@@ -49,3 +49,4 @@ npm install zod
 - [typescript-strict-mode](typescript-strict-mode.md)
 - [vercel-ai-sdk](vercel-ai-sdk.md)
 - [drizzle-orm](drizzle-orm.md)
+- [document-parsing-stack](document-parsing-stack.md) — validate parsed content before use

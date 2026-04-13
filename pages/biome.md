@@ -51,5 +51,7 @@ In CI, Biome docs recommend `biome ci`.
 
 ## Related Pages
 
+- [linting-setup](linting-setup.md) — ESLint + Prettier alternative that Biome replaces
 - [typescript-strict-mode](typescript-strict-mode.md)
 - [react-tailwind-shadcn-ui](react-tailwind-shadcn-ui.md)
+- [nextjs-patterns](nextjs-patterns.md)

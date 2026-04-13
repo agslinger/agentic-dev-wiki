@@ -55,3 +55,5 @@ Use it when the app needs:
 - [zod-4-validation](zod-4-validation.md)
 - [claude-bedrock-models](claude-bedrock-models.md)
 - [openai-model-selection](openai-model-selection.md)
+- [postgres-pgvector](postgres-pgvector.md) — embeddings generated via AI SDK stored here
+- [document-parsing-stack](document-parsing-stack.md) — parsed content flows to AI SDK

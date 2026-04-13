@@ -83,6 +83,7 @@ Useful defaults:
 
 ## Related Pages
 
+- [biome](biome.md) — single-tool alternative to ESLint + Prettier
 - [nodejs-patterns](nodejs-patterns.md)
 - [testing-setup](testing-setup.md)
 - [claude-code-hooks](claude-code-hooks.md)
