@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "pages/claude-md-conventions.md",
+                "file": "pages/project-templates.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "claude-md-conventions"
+              "title": "project-templates"
             }
           }
         ]
@@ -187,6 +187,7 @@
   "lastOpenFiles": [
     "index.md",
     "pages/new-project-checklist.md",
+    "pages/claude-md-conventions.md",
     "pages/vercel-deployment.md",
     "pages/nextjs-patterns.md",
     "templates/CLAUDE.md",

@@ -11,6 +11,13 @@ Last updated: 2026-04-12
 - Read the page whose `Read This When` best matches the problem.
 - Prefer `draft` and `complete` pages over `stub` pages.
 
+## Bootstrapping (new projects)
+
+| Page | Read when | Status | Tags |
+|---|---|---|---|
+| [new-project-checklist](pages/new-project-checklist.md) | Bootstrapping a new project and needing the default order of work | stub | `checklist` `nodejs` `pulumi` `claude-code` |
+| [project-templates](pages/project-templates.md) | Copying ready-to-use CLAUDE.md, AGENTS.md, hooks, and rules into a new project | draft | `claude-code` `ai-agent` `agents-md` `hooks` `nodejs` |
+
 ## AI Agent Configuration
 
 | Page | Read when | Status | Tags |
@@ -63,13 +70,6 @@ Last updated: 2026-04-12
 | Page | Read when | Status | Tags |
 |---|---|---|---|
 | [security-scanning](pages/security-scanning.md) | Adding secret scanning, dependency checks, or secret-handling rules | draft | `security` `secrets` `gitleaks` `nodejs` `cicd` |
-
-## Bootstrapping
-
-| Page | Read when | Status | Tags |
-|---|---|---|---|
-| [new-project-checklist](pages/new-project-checklist.md) | Bootstrapping a new project and needing the default order of work | stub | `checklist` `nodejs` `pulumi` `claude-code` |
-| [project-templates](pages/project-templates.md) | Copying ready-to-use CLAUDE.md, AGENTS.md, hooks, and rules into a new project | draft | `claude-code` `ai-agent` `agents-md` `hooks` `nodejs` |
 
 ## Status Legend
 
