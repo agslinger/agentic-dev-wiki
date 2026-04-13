@@ -17,6 +17,15 @@ sources:
 - Wanting ready-to-use CLAUDE.md, AGENTS.md, hooks, and rules
 - Reviewing the recommended agent architecture as a concrete example
 
+## Default Recommendation
+
+- Start from the template variant closest to the real stack.
+- Keep `AGENTS.md` as the shared core and `CLAUDE.md` as the thin Claude-specific layer.
+- Use hooks for deterministic enforcement and rules for path-scoped guidance.
+- Follow the simplest proving-slice workflow from the templates instead of broad first-pass rewrites.
+
+## Use This Pattern
+
 ## Two Template Variants
 
 | Variant | Path | Stack |
@@ -118,6 +127,15 @@ Then customise:
 3. Adjust path-scoped rules for the actual directory layout
 4. Add project-specific rules to `CLAUDE.md` prohibitions
 5. Test each hook by triggering its event manually
+
+## Commands / Config
+
+Typical setup steps:
+
+- copy the matching template variant
+- make hooks executable
+- update commands to match the real project
+- test hooks manually before relying on them
 
 ## Design Decisions
 

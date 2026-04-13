@@ -30,7 +30,7 @@ A new project bootstrapped from this wiki starts with all layers in place. The a
 5. Generate a project-specific `CLAUDE.md` / `AGENTS.md` from the applicable patterns
 
 **To add new knowledge (Ingest):**
-Check `ingested-sources.md` first, then see the Ingest operation in `SCHEMA.md`.
+Check `project-planning/ingested-sources.md` first, then see the Ingest operation in `SCHEMA.md`.
 
 **To health-check the wiki (Lint):**
 See the Lint operation defined in `SCHEMA.md`.
@@ -44,22 +44,28 @@ See the Lint operation defined in `SCHEMA.md`.
 ├── CLAUDE.md                   ← Instructions for AI agents maintaining this wiki
 ├── index.md                    ← Content catalog — read this first
 ├── log.md                      ← Append-only changelog
-├── ingested-sources.md         ← Track what has been fetched (agent-maintained)
 ├── pages/                      ← All knowledge pages
-│   ├── claude-md-conventions.md
-│   ├── claude-code-hooks.md
-│   ├── nodejs-patterns.md
-│   ├── pulumi-gcp-patterns.md
-│   ├── testing-setup.md
-│   ├── linting-setup.md
-│   ├── cicd-github-actions.md
-│   ├── security-scanning.md
-│   ├── code-review-automation.md
-│   └── new-project-checklist.md
-└── raw-sources/
-    └── sources.md              ← Links to source material — never modified by agent
+├── .claude/                    ← Repo-specific Claude settings, hooks, and rules
+├── .github/workflows/          ← Gitleaks + wiki-lint CI
+├── pages/                      ← All reusable knowledge pages
+├── project-planning/           ← Repo-specific plans, sources, and follow-on questions
+│   ├── ingested-sources.md     ← Track what has been fetched (agent-maintained)
+│   ├── sources.md              ← Links to source material
+│   └── *.md                    ← Plans and follow-on questions
+├── scripts/
+│   └── wiki-lint.ps1           ← Structural lint for this wiki
+└── templates/                  ← Reusable CLAUDE/AGENTS/hooks/rules templates
 ```
+
+## Repo Guardrails
+
+This repo applies its own guidance back onto itself:
+
+- Gitleaks runs in GitHub Actions
+- wiki-specific Claude rules live under `.claude/rules/`
+- `scripts/wiki-lint.ps1` checks page structure, index coverage, required headings, and orphan pages
+- `Wiki Lint` runs in CI on PRs and pushes to `main`
 
 ## Status
 
-Pages are at one of three stages: `stub` → `draft` → `complete`. Check `index.md` for current status of each page.
+Check `index.md` for the current status of each page.

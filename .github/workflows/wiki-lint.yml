@@ -1,0 +1,22 @@
+name: Wiki Lint
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run wiki lint
+        shell: pwsh
+        run: ./scripts/wiki-lint.ps1

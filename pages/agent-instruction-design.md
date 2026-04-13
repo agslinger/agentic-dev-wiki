@@ -38,6 +38,8 @@ Beyond this limit, adherence degrades **silently** — instructions get quietly 
 5. Give the agent **verification** (tests, screenshots) — single highest-leverage action.
 6. Use **RPI or QRSPI** as the task workflow, not as CLAUDE.md content.
 
+## Use This Pattern
+
 ## RISEN Structure for CLAUDE.md
 
 RISEN (Role, Instructions, Steps, End Goal, Narrowing) is the most relevant prompt framework for coding agent instruction files:
@@ -138,6 +140,15 @@ Not all rules belong in CLAUDE.md. Use the right enforcement mechanism:
 | **Skills** | On-demand advisory | Domain knowledge, multi-step procedures |
 
 **Rule of thumb**: if you can enforce it deterministically, don't waste an instruction slot on it.
+
+## Commands / Config
+
+Useful defaults to encode:
+
+- keep `CLAUDE.md` under roughly 100 lines of real instructions
+- move deterministic behavior into hooks and CI
+- move path-specific guidance into `.claude/rules/`
+- require verification steps like tests or screenshots before completion
 
 ## Context Management
 

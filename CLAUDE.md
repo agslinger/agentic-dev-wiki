@@ -20,12 +20,12 @@ The wiki documents seven layers of guardrails: agent structure (CLAUDE.md/hooks)
 
 ### Ingest
 Process new source material (URL, doc, experiment):
-1. **Check `ingested-sources.md` first** — if the URL was ingested within the last 90 days, skip re-fetching unless the user explicitly asks to refresh it
+1. **Check `project-planning/ingested-sources.md` first** — if the URL was ingested within the last 90 days, skip re-fetching unless the user explicitly asks to refresh it
 2. Fetch and read the source
 3. Identify which pages in `index.md` it updates — read those pages
 4. Update or create pages with sourced facts + confidence scores
 5. Update `index.md` if new pages were created
-6. **Update `ingested-sources.md`** — move the URL from "not yet ingested" to the ingested table, or add it if new
+6. **Update `project-planning/ingested-sources.md`** — move the URL from "not yet ingested" to the ingested table, or add it if new
 7. Append to `log.md`: `## [YYYY-MM-DD] ingest | <source title>`
 
 ### Query
@@ -46,22 +46,25 @@ Health-check the wiki:
 2. Flag stubs with `last-updated` > 30 days
 3. Check for contradictions — mark with `> ⚠️ CONTRADICTION:`
 4. Report orphaned pages (on disk but not in `index.md`)
+5. Run `pwsh ./scripts/wiki-lint.ps1` for structural checks before finishing substantial wiki edits
 
 ---
 
 ## Current State (2026-04-12)
 
-All 9 pages are `stub` status — structure only, no sourced content yet.
+The wiki now contains multiple draft pages across:
 
-**Priority Ingest queue** (in order):
-1. `pages/claude-md-conventions.md` — fetch Anthropic Claude Code docs (CLAUDE.md guide)
-2. `pages/claude-code-hooks.md` — fetch Anthropic Claude Code hooks documentation
-3. `pages/testing-setup.md` — Vitest docs + Node.js testing patterns
-4. `pages/cicd-github-actions.md` — Pulumi GitHub Actions + GCP OIDC
-5. `pages/linting-setup.md` — ESLint flat config + Prettier
-6. `pages/nodejs-patterns.md` — Node.js best practices guide
+- agent configuration
+- Node.js and frontend stack choices
+- testing, security, CI/CD, and review
+- project templates
+- repo-specific planning in `project-planning/`
 
-All source URLs are in `raw-sources/sources.md`.
+This repo also applies some of its own guidance back onto itself:
+
+- `.claude/rules/` for wiki maintenance
+- `scripts/wiki-lint.ps1` for structural linting
+- GitHub Actions workflows for Gitleaks and wiki lint
 
 ---
 
@@ -70,9 +73,10 @@ All source URLs are in `raw-sources/sources.md`.
 - Every page has YAML frontmatter: `title`, `type`, `status`, `confidence` (0–100), `tags`, `last-updated`, `sources`
 - Confidence: 0–30 stub · 31–60 draft · 61–85 solid · 86–100 verified
 - Never delete content — supersede with strikethrough + note
-- `raw-sources/sources.md` is human-only — never modify it
-- `ingested-sources.md` is agent-maintained — update it after every Ingest operation
+- `project-planning/sources.md` is human-maintained source collection
+- `project-planning/ingested-sources.md` is agent-maintained — update it after every Ingest operation
 - Always update `log.md` after any write operation
+- Prefer the simplest proving slice over the smallest arbitrary slice when changing the wiki itself
 
 ---
 
