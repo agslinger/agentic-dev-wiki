@@ -10,113 +10,85 @@ sources: []
 
 # New Project Bootstrap Checklist
 
-> **Status: stub** — items drawn from wiki page synthesis. Expand as wiki pages reach `complete` status.
-> Work through this top-to-bottom when starting a new project.
+## Read This When
 
----
+- Starting a new project from this wiki
+- Needing the default order of setup work
 
-## 1. Repository Setup
+## Default Flow
 
-- [ ] Create repo on GitHub (private by default)
-- [ ] Add `README.md` (project purpose, setup instructions, deploy commands)
-- [ ] Add `.gitignore` — Node.js template + extras: `.env`, `*.pem`, `.pulumi/`, `.build/`
-- [ ] Add `AGENTS.md` / `CLAUDE.md` at repo root (see [claude-md-conventions](claude-md-conventions.md))
-- [ ] Pin Node.js version: add `.nvmrc` and `engines` field in `package.json`
-- [ ] Add `LICENSE` if open source
+Build the guardrail stack in this order:
 
-## 2. Code Structure
+1. repo and instructions
+2. code structure
+3. secret scanning
+4. linting
+5. testing
+6. infrastructure
+7. CI/CD
+8. agent automation
+9. review and docs
 
-- [ ] Separate `src/` (application) from `infra/` (IaC) — each with own `package.json`
-- [ ] `"use strict"` at top of all JS files
-- [ ] Entry point: `src/index.js` (server bootstrap, keep thin)
-- [ ] Request handler: `src/app.js` (routing and logic)
+## Checklist
 
-## 3. Secret Scanning (Day 1 — before first commit)
+### 1. Repo
 
-- [ ] Install Husky: `npm install --save-dev husky && npx husky init`
-- [ ] Install Gitleaks (system-level)
-- [ ] Create `.gitleaks.toml` with project-specific custom rules
-- [ ] Wire Gitleaks into `.husky/pre-commit`
-- [ ] Test: try to commit a fake secret — confirm it's blocked
-- [ ] See [security-scanning](security-scanning.md) for full setup
+- [ ] Create repo and `README.md`
+- [ ] Add `.gitignore`
+- [ ] Add `CLAUDE.md`
+- [ ] Pin Node version with `.nvmrc` and `package.json#engines`
 
-## 4. Code Quality
+### 2. Code
 
-- [ ] Install ESLint + Prettier: `npm install --save-dev eslint prettier eslint-config-prettier`
-- [ ] Create `eslint.config.js` (flat config)
-- [ ] Create `.prettierrc`
-- [ ] Add `lint`, `lint:fix`, `format` scripts to `package.json`
-- [ ] Add lint step to pre-commit hook
-- [ ] See [linting-setup](linting-setup.md) for full config
+- [ ] Separate `src/` and `infra/`
+- [ ] Use `createServer()` pattern
+- [ ] Add env validation
 
-## 5. Testing
+### 3. Security
 
-- [ ] Install Vitest (or Jest): `npm install --save-dev vitest`
-- [ ] Create first test file for the request handler
-- [ ] Add `test`, `test:watch`, `test:coverage` scripts to `package.json`
-- [ ] Set coverage threshold (suggest: 70% lines minimum)
-- [ ] See [testing-setup](testing-setup.md) for full setup
+- [ ] Install Gitleaks
+- [ ] Add `.gitleaks.toml`
+- [ ] Block secrets in pre-commit
 
-## 6. Infrastructure (if using Pulumi/GCP)
+### 4. Quality
 
-- [ ] Init Pulumi project in `infra/`: `pulumi new` or copy YAML structure
-- [ ] Set up stack config: `infra/Pulumi.<stack>.yaml`
-- [ ] Configure secrets: `pulumi config set --secret <key> <value>`
-- [ ] Add `infra/` to `.gitignore` for `.build/` artifacts
-- [ ] Prefix all resource names with stack: `${stack}-resource-name`
-- [ ] Enable required GCP APIs before creating dependent resources
-- [ ] See [pulumi-gcp-patterns](pulumi-gcp-patterns.md) for full patterns
+- [ ] Add ESLint flat config
+- [ ] Add Prettier
+- [ ] Add Husky/lint-staged
 
-## 7. CI/CD
+### 5. Testing
 
-- [ ] Create `.github/workflows/ci.yml` — lint and test on every PR
-- [ ] Create `.github/workflows/deploy.yml` — Pulumi deploy on merge to `main`
-- [ ] Set up GCP Workload Identity Federation (avoid service account keys in CI)
-- [ ] Add `PULUMI_ACCESS_TOKEN` (or GCS backend config) to GitHub Secrets
-- [ ] Enable branch protection: require CI to pass before merge
-- [ ] See [cicd-github-actions](cicd-github-actions.md) for workflow templates
+- [ ] Add Vitest
+- [ ] Add first HTTP test
+- [ ] Add coverage threshold
 
-## 7b. AI Code Review (CodeRabbit)
+### 6. Infra
 
-- [ ] Install CodeRabbit GitHub App — grant access to the new repo
-- [ ] Add `.coderabbit.yaml` at repo root with `profile: assertive` and path instructions
-- [ ] Point `knowledge_base.code_guidelines.filePatterns` at `CLAUDE.md`
-- [ ] Enable `slop_detection` if using agents that produce high PR volume
-- [ ] Open a test PR and verify CodeRabbit posts a review
-- [ ] See [code-review-automation](code-review-automation.md) for full config
+- [ ] Set up `infra/` as separate project
+- [ ] Add Pulumi stack config
+- [ ] Store secrets with `pulumi config set --secret`
 
-## 8. AI Agent Configuration
+### 7. CI/CD
 
-- [ ] Update `AGENTS.md` / `CLAUDE.md` with project-specific commands and conventions
-- [ ] Add reference to this wiki: `~/.claude/wiki/agentic-dev/index.md`
-- [ ] Configure Claude Code hooks for auto-lint on edit (see [claude-code-hooks](claude-code-hooks.md))
-- [ ] Verify agent can run `npm test`, `npm run lint`, and Pulumi preview
+- [ ] Add `ci.yml`
+- [ ] Add deploy workflow if needed
+- [ ] Use OIDC for GCP auth
 
-## 9. Security Review
+### 8. Agent Tooling
 
-- [ ] All secrets in Pulumi config or environment variables — none hardcoded
-- [ ] Security headers set on all HTTP responses
-- [ ] CORS origin validation (allowlist, not wildcard `*`)
-- [ ] `npm audit` — zero high/critical vulnerabilities
-- [ ] `robots.txt` if publicly accessible
+- [ ] Add shared Claude rules
+- [ ] Add hooks only where they help
 
-## 10. Documentation
+### 9. Review And Docs
 
-- [ ] `README.md` covers: what it does, how to run locally, how to deploy
-- [ ] `AGENTS.md` covers: project overview, conventions, rules, common commands
-- [ ] Infrastructure resources documented (at minimum: what's deployed and why)
+- [ ] Add CodeRabbit or equivalent review layer
+- [ ] Make sure `README.md` and `CLAUDE.md` match reality
 
----
+## Related Pages
 
-## Status of dependent wiki pages
-
-| Page | Status | Blocks checklist section |
-|------|--------|--------------------------|
-| [claude-md-conventions](claude-md-conventions.md) | draft | Section 1, 8 |
-| [claude-code-hooks](claude-code-hooks.md) | draft | Section 8 |
-| [security-scanning](security-scanning.md) | draft | Section 3, 9 |
-| [linting-setup](linting-setup.md) | draft | Section 4 |
-| [testing-setup](testing-setup.md) | draft | Section 5 |
-| [pulumi-gcp-patterns](pulumi-gcp-patterns.md) | draft | Section 6 |
-| [cicd-github-actions](cicd-github-actions.md) | draft | Section 7 |
-| [code-review-automation](code-review-automation.md) | draft | Section 7b |
+- [claude-md-conventions](claude-md-conventions.md)
+- [linting-setup](linting-setup.md)
+- [testing-setup](testing-setup.md)
+- [security-scanning](security-scanning.md)
+- [cicd-github-actions](cicd-github-actions.md)
+- [code-review-automation](code-review-automation.md)

@@ -176,3 +176,21 @@ Updated the project planning docs to make the intended hosting path explicit: lo
 **Files updated:**
 - `project-planning/neo4j-design-plan.md` — added local-to-Aura progression, CLI operations model, and phase guidance
 - `project-planning/follow-on-questions.md` — refined Neo4j operations questions around local runtime defaults and Aura transition
+
+## [2026-04-12] create | Refactor wiki for LLM readability
+
+Refactored the wiki to optimize for fast agent retrieval and shorter page reads.
+
+**Files updated:**
+- `SCHEMA.md` — added strict page shape, length targets, and split rules
+- `index.md` — changed summaries to `Read when` selection hints
+- `pages/claude-md-conventions.md`
+- `pages/claude-code-hooks.md`
+- `pages/nodejs-patterns.md`
+- `pages/linting-setup.md`
+- `pages/testing-setup.md`
+- `pages/pulumi-gcp-patterns.md`
+- `pages/cicd-github-actions.md`
+- `pages/security-scanning.md`
+- `pages/code-review-automation.md`
+- `pages/new-project-checklist.md`
