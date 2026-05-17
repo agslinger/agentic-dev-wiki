@@ -1,2 +1,4 @@
 # Local Claude Code settings (personal config, not shared)
 .claude/settings.local.json
+.obsidian/graph.json
+.obsidian/workspace.json

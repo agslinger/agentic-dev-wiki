@@ -1,6 +1,6 @@
 # Raw Sources
 
-> This file is **never modified by an agent**. Only humans add entries here.
+> This file is **only for definitive sources**. Only humans can delete items
 > These are the authoritative input sources that feed Ingest operations.
 
 ---

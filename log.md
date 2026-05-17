@@ -5,6 +5,19 @@ Append-only chronological record of all operations. Format:
 
 Operations: `ingest` | `query` | `lint` | `bootstrap` | `create`
 
+## [2026-05-17] create | Remove implemented planning briefs
+
+Removed planning briefs after their guidance was promoted into canonical wiki pages.
+
+**Files removed:**
+- `planning/agent-design-methodology-research.md`
+- `planning/markdown-knowledge-webapp-architecture-research.md`
+- `planning/polyglot-data-storage-research.md`
+
+Notes:
+- Kept `planning/sources.md` as the human source list.
+- Kept `planning/ingested-sources.md` as the source ledger.
+
 ## [2026-05-17] lint | Deduplicate linked wiki guidance
 
 Reviewed the newly promoted pages and their linked neighbors for ownership overlap.
@@ -495,3 +508,422 @@ Key findings ingested:
 - treat human evaluation as the bottleneck and have the agent prepare a review pack after automated checks
 - make the review pack concrete: commands run, files changed, exact spot checks, plus screenshots or demo artifacts when relevant
 - use transcript or trace review to find stale docs, noisy warnings, and missing commands that send agents down avoidable detours
+
+## [2026-05-17] planning | Agent lifecycle and composable data storage research
+
+**Pages updated:** none
+
+**Planning files added:**
+- `planning/agent-design-methodology-research.md`
+- `planning/polyglot-data-storage-research.md`
+
+Notes:
+- Collated sources and candidate wiki shapes for design-methodology-driven agent development lifecycle guidance.
+- Collated sources and candidate wiki shapes for combining SQL, vector, graph, full-text, Git, and Obsidian data shapes.
+- Kept research out of canonical `pages/` as requested.
+
+## [2026-05-17] planning | Split future research topics into focused pages
+
+**Pages updated:** none
+
+**Planning files updated:**
+- `planning/agent-design-methodology-research.md`
+- `planning/polyglot-data-storage-research.md`
+
+Notes:
+- Planned agent lifecycle topic as `agent-development-lifecycle.md` plus `html-prototyping-for-agent-review.md`.
+- Planned composable data topic as `composable-data-storage.md` plus `pinecone-retrieval.md`.
+- Kept edits in planning only.
+
+## [2026-05-17] planning | Markdown knowledge web app architecture research
+
+**Pages updated:** none
+
+**Planning files added:**
+- `planning/markdown-knowledge-webapp-architecture-research.md`
+
+**Planning files updated:**
+- `planning/polyglot-data-storage-research.md`
+
+Notes:
+- Captured Obsidian/Markdown repo or object store -> ingestion -> Postgres -> Chatbot/RAG architecture.
+- Added read-only and read/write web app modes as a separate future page candidate.
+- Kept edits in planning only.
+
+## [2026-05-17] planning | Sigma.js and Graphology for wiki graph visualization
+
+**Pages updated:** none
+
+**Planning files updated:**
+- `planning/obsidian-graph-viewer-plan.md`
+- `planning/markdown-knowledge-webapp-architecture-research.md`
+
+Notes:
+- Switched graph viewer recommendation from `force-graph` default to Sigma.js + Graphology.
+- Kept `force-graph` only as a quick-spike fallback.
+- Noted graph visualization JSON as a derived artifact from Markdown links and metadata.
+
+## [2026-05-17] planning | Separate reusable wiki ingest from this repo build path
+
+**Pages updated:** none
+
+**Planning files updated:**
+- `planning/polyglot-data-storage-research.md`
+- `planning/markdown-knowledge-webapp-architecture-research.md`
+- `planning/obsidian-graph-viewer-plan.md`
+- `planning/neo4j-design-plan.md`
+
+Notes:
+- Split plans into "add reusable guidance to the wiki" and "build this wiki's simpler version first" tracks.
+- Set current build path as Markdown/Git/Obsidian -> ingestion -> Postgres/FTS/pgvector/edge tables -> Sigma.js/Graphology.
+- Reframed Neo4j as a later graph-specialist escalation, not the first implementation step.
+
+## [2026-05-17] planning | Refresh follow-on questions for simpler build path
+
+**Pages updated:** none
+
+**Planning files updated:**
+- `planning/follow-on-questions.md`
+
+Notes:
+- Replaced Neo4j-first questions with current simpler path questions.
+- Grouped questions into needed now, reusable wiki ingest, and deferred decisions.
+- Kept Neo4j, Pinecone, read/write editing, and object storage as deferred topics.
+
+## [2026-05-17] planning | Record first graph viewer build decisions
+
+**Pages updated:** none
+
+**Planning files updated:**
+- `planning/follow-on-questions.md`
+
+Notes:
+- Set first build scope to graph viewer only from generated JSON.
+- Set first graph scope to canonical wiki only.
+- Deferred search, Postgres, `pgvector`, RAG, and chatbot until after the graph viewer slice.
+- Set first UI exposure to private authenticated.
+
+## [2026-05-17] planning | Record graph JSON build generation decision
+
+**Pages updated:** none
+
+**Planning files updated:**
+- `planning/follow-on-questions.md`
+
+Notes:
+- Set graph JSON generation to automatic during app build.
+
+## [2026-05-17] planning | Record graph layout decision
+
+**Pages updated:** none
+
+**Planning files updated:**
+- `planning/follow-on-questions.md`
+
+Notes:
+- Set graph layout coordinates to client-side calculation for the first slice.
+
+## [2026-05-17] planning | Record first-slice auth approach
+
+**Pages updated:** none
+
+**Planning files updated:**
+- `planning/follow-on-questions.md`
+
+Notes:
+- Set auth approach to reuse the repo/app standard where implemented.
+- Avoid introducing a custom full-account auth system for the first graph viewer slice.
+
+## [2026-05-17] planning | Record first graph link parsing scope
+
+**Pages updated:** none
+
+**Planning files updated:**
+- `planning/follow-on-questions.md`
+
+Notes:
+- Set first graph build to parse Markdown links plus Obsidian wikilinks.
+- Kept external URLs out of the first graph node set.
+
+## [2026-05-17] planning | Record unresolved link handling
+
+**Pages updated:** none
+
+**Planning files updated:**
+- `planning/follow-on-questions.md`
+
+Notes:
+- Set unresolved links to be stored in graph JSON as warnings/metadata.
+- Deferred visible unresolved-link UI.
+
+## [2026-05-17] planning | Record first graph node model
+
+**Pages updated:** none
+
+**Planning files updated:**
+- `planning/follow-on-questions.md`
+
+Notes:
+- Set first graph node model to pages plus tags.
+- Deferred section/chunk nodes.
+
+## [2026-05-17] planning | Record tag node visualization decision
+
+**Pages updated:** none
+
+**Planning files updated:**
+- `planning/follow-on-questions.md`
+
+Notes:
+- Set tags to render as actual graph nodes connected to pages.
+
+## [2026-05-17] planning | Record graph node click behavior
+
+**Pages updated:** none
+
+**Planning files updated:**
+- `planning/follow-on-questions.md`
+
+Notes:
+- Set page node clicks to open rendered pages inside the app.
+
+## [2026-05-17] planning | Record rendered page scope
+
+**Pages updated:** none
+
+**Planning files updated:**
+- `planning/follow-on-questions.md`
+
+Notes:
+- Set rendered page scope to Markdown plus frontmatter plus backlinks/outgoing links.
+
+## [2026-05-17] planning | Record graph viewer implementation repo
+
+**Pages updated:** none
+
+**Planning files updated:**
+- `planning/follow-on-questions.md`
+- `planning/obsidian-graph-viewer-plan.md`
+
+Notes:
+- Set graph viewer implementation location to `C:\Users\agsli\GitHub\talk-head-app`.
+- Kept `agentic-dev-wiki` as the Markdown source and planning repo.
+
+## [2026-05-17] planning | Record remote GitHub as wiki source
+
+**Pages updated:** none
+
+**Planning files updated:**
+- `planning/follow-on-questions.md`
+- `planning/obsidian-graph-viewer-plan.md`
+
+Notes:
+- Set `talk-head-app` to read canonical wiki content from remote GitHub.
+- Avoid requiring a local sibling checkout for the first graph build.
+
+## [2026-05-17] planning | Record configurable GitHub source ref
+
+**Pages updated:** none
+
+**Planning files updated:**
+- `planning/follow-on-questions.md`
+- `planning/obsidian-graph-viewer-plan.md`
+
+Notes:
+- Set GitHub wiki source ref to configurable branch/ref, defaulting to `main`.
+
+## [2026-05-17] planning | Record optional GitHub source token
+
+**Pages updated:** none
+
+**Planning files updated:**
+- `planning/follow-on-questions.md`
+- `planning/obsidian-graph-viewer-plan.md`
+
+Notes:
+- Set GitHub source access to support optional environment token.
+- Allow unauthenticated fetch for public repos.
+
+## [2026-05-17] planning | Record GitHub REST source fetch
+
+**Pages updated:** none
+
+**Planning files updated:**
+- `planning/follow-on-questions.md`
+- `planning/obsidian-graph-viewer-plan.md`
+
+Notes:
+- Set build-time wiki source fetch to GitHub REST API.
+
+## [2026-05-17] planning | Record README and SCHEMA graph scope
+
+**Pages updated:** none
+
+**Planning files updated:**
+- `planning/follow-on-questions.md`
+- `planning/obsidian-graph-viewer-plan.md`
+
+Notes:
+- Set first graph nodes to `pages/` and `index.md`.
+- Set `README.md` and `SCHEMA.md` as source metadata only.
+
+## [2026-05-17] planning | Record index node role
+
+**Pages updated:** none
+
+**Planning files updated:**
+- `planning/follow-on-questions.md`
+- `planning/obsidian-graph-viewer-plan.md`
+
+Notes:
+- Set `index.md` as a special root/catalog graph node with different styling.
+
+## [2026-05-17] planning | Record first graph edge model
+
+**Pages updated:** none
+
+**Planning files updated:**
+- `planning/follow-on-questions.md`
+- `planning/obsidian-graph-viewer-plan.md`
+
+Notes:
+- Set first graph edges to include page-to-page links, page-to-tag links, and index-to-page catalog edges.
+
+## [2026-05-17] planning | Record graph grouping decision
+
+**Pages updated:** none
+
+**Planning files updated:**
+- `planning/follow-on-questions.md`
+- `planning/obsidian-graph-viewer-plan.md`
+
+Notes:
+- Set first visual grouping to index section.
+
+## [2026-05-17] planning | Record planning-file visibility
+
+**Pages updated:** none
+
+**Planning files updated:**
+- `planning/follow-on-questions.md`
+- `planning/obsidian-graph-viewer-plan.md`
+
+Notes:
+- Set planning files to be fully hidden from the first graph app.
+
+## [2026-05-17] planning | Record source metadata UI placement
+
+**Pages updated:** none
+
+**Planning files updated:**
+- `planning/follow-on-questions.md`
+- `planning/obsidian-graph-viewer-plan.md`
+
+Notes:
+- Set `README.md`/`SCHEMA.md` metadata visibility to About/System page only.
+
+## [2026-05-17] planning | Record talk-head-app handoff target
+
+**Pages updated:** none
+
+**Planning files updated:**
+- `planning/follow-on-questions.md`
+- `planning/obsidian-graph-viewer-plan.md`
+
+Notes:
+- Set implementation planning handoff target to `C:\Users\agsli\GitHub\talk-head-app\plans\slice-26-knowledge-base-wiki-integration.md`.
+- Set deployment to use the existing `talk-head-app` deployment target.
+
+## [2026-05-17] planning | Record rendered page routing
+
+**Pages updated:** none
+
+**Planning files updated:**
+- `planning/follow-on-questions.md`
+- `planning/obsidian-graph-viewer-plan.md`
+
+Notes:
+- Set rendered wiki page routes to path-based URLs.
+
+## [2026-05-17] planning | Record wiki entry route
+
+**Pages updated:** none
+
+**Planning files updated:**
+- `planning/follow-on-questions.md`
+- `planning/obsidian-graph-viewer-plan.md`
+
+Notes:
+- Set graph/knowledge-base entry route to `/wiki`.
+
+## [2026-05-17] planning | Record graph data delivery
+
+**Pages updated:** none
+
+**Planning files updated:**
+- `planning/follow-on-questions.md`
+- `planning/obsidian-graph-viewer-plan.md`
+
+Notes:
+- Set graph data delivery to static app assets generated at build time.
+
+## [2026-05-17] planning | Record first graph label filter
+
+**Pages updated:** none
+
+**Planning files updated:**
+- `planning/follow-on-questions.md`
+- `planning/obsidian-graph-viewer-plan.md`
+
+Notes:
+- Added simple client-side page/tag label filter to first graph viewer scope.
+
+## [2026-05-17] planning | Record first implementation test scope
+
+**Pages updated:** none
+
+**Planning files updated:**
+- `planning/follow-on-questions.md`
+
+Notes:
+- Set first implementation test scope to graph generator, rendered page, and Playwright route smoke tests.
+
+## [2026-05-17] planning | Move later talk-head-app wiki work into Slice 27
+
+**Pages updated:** none
+
+**External plan files updated:**
+- `C:\Users\agsli\GitHub\talk-head-app\plans\slice-26-knowledge-base-wiki-integration.md`
+- `C:\Users\agsli\GitHub\talk-head-app\plans\slice-27-wiki-editor.md`
+
+Notes:
+- Narrowed Slice 26 to the private authenticated static graph viewer and rendered wiki pages.
+- Moved Postgres ingest, search, pgvector, Slingbot/RAG, webhooks, editing, object storage, Pinecone, and Neo4j into Slice 27 so the later work is preserved.
+
+## [2026-05-17] planning | Record Slice 26 graph dependencies
+
+**Pages updated:** none
+
+**External plan files updated:**
+- `C:\Users\agsli\GitHub\talk-head-app\plans\slice-26-knowledge-base-wiki-integration.md`
+
+Notes:
+- Added `graphology`, `sigma`, and `@react-sigma/core` as dependencies to add during Slice 26 implementation.
+- Did not install dependencies or implement code.
+
+## [2026-05-17] planning | Remove app implementation plans from wiki repo
+
+**Pages updated:** none
+
+**Planning files removed from this repo:**
+- `planning/follow-on-questions.md`
+- `planning/obsidian-graph-viewer-plan.md`
+- `planning/neo4j-design-plan.md`
+
+**Planning files updated:**
+- `planning/polyglot-data-storage-research.md`
+- `planning/markdown-knowledge-webapp-architecture-research.md`
+
+Notes:
+- Kept app implementation planning in `C:\Users\agsli\GitHub\talk-head-app\plans\slice-26-knowledge-base-wiki-integration.md` and `slice-27-wiki-editor.md`.
+- Removed implementation-track sections from remaining research briefs so this repo keeps reusable wiki research only.

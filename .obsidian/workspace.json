@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "pages/project-templates.md",
+                "file": "pages/cicd-github-actions.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "project-templates"
+              "title": "cicd-github-actions"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#automation",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -74,7 +74,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -185,6 +186,10 @@
   },
   "active": "489649a841b865f3",
   "lastOpenFiles": [
+    "2026-05-11.md",
+    "Untitled.canvas",
+    "pages/project-templates.md",
+    "pages/gitignore-best-practices.md",
     "index.md",
     "pages/new-project-checklist.md",
     "pages/claude-md-conventions.md",
@@ -213,7 +218,6 @@
     "plans",
     "ingested-sources.md",
     "index.md.tmp.24652.1776038435047",
-    "2026-04-12.md",
-    "Untitled.canvas"
+    "2026-04-12.md"
   ]
 }
