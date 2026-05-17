@@ -5,6 +5,42 @@ Append-only chronological record of all operations. Format:
 
 Operations: `ingest` | `query` | `lint` | `bootstrap` | `create`
 
+## [2026-04-19] create | Add Obsidian-style graph viewer plan
+
+Added a short repo-specific plan for building a public HTML wiki graph viewer with an Obsidian-like feel.
+
+**Files created:**
+- `project-planning/obsidian-graph-viewer-plan.md` — markdown-first build approach, Node graph export, static viewer, and Vercel hosting recommendation
+
+**Files updated:**
+- `project-planning/obsidian-graph-viewer-plan.md` — aligned the plan with wiki guidance on Next.js App Router, Vercel hosting, Biome, Vitest, Playwright, and Gitleaks
+- `project-planning/obsidian-graph-viewer-plan.md` — updated again to match the `talk-head-app` stack and a Pulumi-managed cloud-hosted deployment model
+
+## [2026-04-19] create | Add top-level AGENTS.md
+
+Created a concise root `AGENTS.md` for cross-agent repo guidance.
+
+**Files created:**
+- `AGENTS.md` — short repo overview, canonical paths, brevity rule, and write/log guardrails
+
+**Files updated:**
+- `CLAUDE.md` — now imports `@AGENTS.md` so Claude inherits the shared repo guidance
+
+## [2026-04-19] create | Move shared repo policy from CLAUDE.md to AGENTS.md
+
+Refactored root agent instructions so shared repo workflow lives in `AGENTS.md` and `CLAUDE.md` stays Claude-specific.
+
+**Files updated:**
+- `AGENTS.md` — now includes repo purpose, read order, workflows, and wiki writing rules
+- `CLAUDE.md` — reduced to a thin Claude-specific layer with hooks/settings guidance
+
+## [2026-04-19] create | Clarify current repo tech in AGENTS.md
+
+Updated root agent guidance to reflect the technologies actually present in this repo.
+
+**Files updated:**
+- `AGENTS.md` — added current repo tech summary including Obsidian config, Claude config, PowerShell wiki lint, GitHub Actions CI, and existing Gitleaks setup
+
 ---
 
 ## [2026-04-12] create | Initial wiki structure
@@ -193,6 +229,19 @@ Key findings:
 - Enforcement pyramid: linters > hooks > CI > CodeRabbit > CLAUDE.md rules > skills (deterministic before advisory)
 - Context: stay under 40%, fresh sessions at 60%, subagents as context firewalls
 - Anthropic's own #1 recommendation: give Claude verification (tests/screenshots)
+
+## [2026-04-12] create | .gitignore best practices page
+
+Added a new wiki page covering .gitignore defaults for the recommended stack, including which agent/tool config to track vs ignore, secrets handling, and common pitfalls.
+
+**Files created:**
+- `pages/gitignore-best-practices.md`
+
+**Files updated:**
+- `index.md` — added entry under Security section
+- `pages/security-scanning.md` — added cross-link
+- `pages/new-project-checklist.md` — added cross-link
+- `pages/project-templates.md` — added cross-link
 
 ## [2026-04-12] create | Next.js template variant + cross-link audit
 
@@ -389,3 +438,21 @@ Combined the two template variants into one recommended default stack with stage
 **Files removed from canonical template:**
 - `templates/.claude/rules/api-handlers.md`
 - `templates/.claude/rules/infrastructure.md`
+
+## [2026-04-19] ingest | Lucas Meijer — A love letter to Pi
+
+**Source:** https://www.youtube.com/watch?v=fdbXNWkpPMY  
+**Pages updated:** `pages/agent-instruction-design.md`, `pages/testing-setup.md`, `pages/project-templates.md`
+
+**Files updated:**
+- `templates/AGENTS.md`
+- `templates/CLAUDE.md`
+- `templates/nextjs/AGENTS.md`
+- `templates/nextjs/CLAUDE.md`
+
+Key findings ingested:
+- decide how a human will evaluate the result before launching the agent
+- tell the agent the review method up front so it knows what "done" means
+- treat human evaluation as the bottleneck and have the agent prepare a review pack after automated checks
+- make the review pack concrete: commands run, files changed, exact spot checks, plus screenshots or demo artifacts when relevant
+- use transcript or trace review to find stale docs, noisy warnings, and missing commands that send agents down avoidable detours

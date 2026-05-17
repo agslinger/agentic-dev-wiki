@@ -60,8 +60,9 @@ npx drizzle-kit migrate
 3. Prove one dummy happy path end to end before generalizing.
 4. Run the narrowest relevant test immediately after each small change.
 5. Fix failures before broadening scope.
-6. Run lint, build, and broader checks at proving boundaries and before commit.
-7. Commit each coherent proving slice separately.
+6. Run lint, build, and broader checks at proving boundaries and before preparing the handoff.
+7. Before commit, prepare a short review pack: files changed, commands run, and exact manual spot checks.
+8. Commit each coherent proving slice separately.
 
 ## Decision Points
 
@@ -88,4 +89,3 @@ Ask before deciding things like:
 - Never hardcode secrets.
 - Never modify migration files retroactively without explicit approval.
 - Prefer one proving slice over one large unfinished feature.
-

@@ -92,3 +92,4 @@ Build the guardrail stack in this order:
 - [security-scanning](security-scanning.md)
 - [cicd-github-actions](cicd-github-actions.md)
 - [code-review-automation](code-review-automation.md)
+- [gitignore-best-practices](gitignore-best-practices.md)

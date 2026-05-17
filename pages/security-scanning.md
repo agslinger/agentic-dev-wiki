@@ -71,3 +71,4 @@ pulumi config set --secret <key> <value>
 - [cicd-github-actions](cicd-github-actions.md)
 - [nodejs-patterns](nodejs-patterns.md)
 - [new-project-checklist](new-project-checklist.md)
+- [gitignore-best-practices](gitignore-best-practices.md)

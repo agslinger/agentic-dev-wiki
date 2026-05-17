@@ -12,8 +12,10 @@
 - Prefer a dummy happy path first: one simplified route or user flow that proves the design end to end.
 - After each small change, run the narrowest relevant test before continuing.
 - After implementing, verify your own work — run tests, check build, read the diff.
+- Before committing, prepare a short review pack: commands run, files changed, exact spot checks.
 - Commit after each coherent passing slice instead of batching unrelated work.
 - Start the dev server and test UI changes in a browser before reporting done.
+- For UI changes, include screenshots and a short manual click path in the review pack.
 
 ## Hooks Active
 
@@ -32,3 +34,4 @@ These run automatically — you do not need to duplicate their behavior:
 - Do not run `npx drizzle-kit migrate` without explicit approval.
 - Do not add new npm dependencies without stating why.
 - Do not use `any` type — use `unknown` and narrow, or define a proper type.
+- Do not stop at "tests pass" without making the change easy to inspect manually.

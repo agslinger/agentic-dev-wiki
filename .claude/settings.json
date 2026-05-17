@@ -1,4 +1,17 @@
 {
+  "permissions": {
+    "allow": [
+      "WebFetch",
+      "WebSearch",
+      "Bash(mkdir -p c:/Users/agsli/GitHub/agentic-dev-wiki/templates/.claude/hooks)",
+      "Bash(mkdir -p c:/Users/agsli/GitHub/agentic-dev-wiki/templates/.claude/rules)",
+      "Bash(mkdir -p c:/Users/agsli/GitHub/agentic-dev-wiki/templates/nextjs/.claude/hooks)",
+      "Bash(mkdir -p c:/Users/agsli/GitHub/agentic-dev-wiki/templates/nextjs/.claude/rules)",
+      "Bash(pwsh ./scripts/wiki-lint.ps1)",
+      "Bash(git add:*)",
+      "Bash(git commit -m ':*)"
+    ]
+  },
   "hooks": {
     "Stop": [
       {
@@ -11,17 +24,6 @@
           }
         ]
       }
-    ]
-  },
-  "permissions": {
-    "allow": [
-      "WebFetch",
-      "WebSearch",
-      "Bash(mkdir -p c:/Users/agsli/GitHub/agentic-dev-wiki/templates/.claude/hooks)",
-      "Bash(mkdir -p c:/Users/agsli/GitHub/agentic-dev-wiki/templates/.claude/rules)",
-      "Bash(mkdir -p c:/Users/agsli/GitHub/agentic-dev-wiki/templates/nextjs/.claude/hooks)",
-      "Bash(mkdir -p c:/Users/agsli/GitHub/agentic-dev-wiki/templates/nextjs/.claude/rules)",
-      "Bash(pwsh ./scripts/wiki-lint.ps1)"
     ]
   }
 }

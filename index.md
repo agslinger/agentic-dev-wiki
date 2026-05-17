@@ -70,6 +70,7 @@ Last updated: 2026-04-12
 | Page | Read when | Status | Tags |
 |---|---|---|---|
 | [security-scanning](pages/security-scanning.md) | Adding secret scanning, dependency checks, or secret-handling rules | draft | `security` `secrets` `gitleaks` `nodejs` `cicd` |
+| [gitignore-best-practices](pages/gitignore-best-practices.md) | Creating or auditing a .gitignore, deciding which tool and agent config to track | draft | `nodejs` `typescript` `security` `claude-code` |
 
 ## Status Legend
 

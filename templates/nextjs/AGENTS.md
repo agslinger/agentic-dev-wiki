@@ -51,9 +51,10 @@ npx drizzle-kit migrate   # Apply migrations
 3. Get one simplified happy-path workflow working before broadening the implementation.
 4. Run the narrowest relevant test immediately after that small change.
 5. Fix failures before expanding the scope.
-6. Run `npm run lint` and `npm run build` at slice boundaries and before committing.
-7. Use plan mode for changes touching more than 3 files.
-8. Commit each coherent passing slice with a descriptive message explaining *why*, not just *what*.
+6. Run `npm run lint` and `npm run build` at slice boundaries and before preparing the handoff.
+7. For changes touching more than 3 files, switch into plan mode before implementation.
+8. Before commit, prepare a short review pack: files changed, commands run, and exact manual spot checks.
+9. Commit each coherent passing slice with a descriptive message explaining *why*, not just *what*.
 
 ## Quality Gates
 

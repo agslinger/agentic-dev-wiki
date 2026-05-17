@@ -2,11 +2,12 @@
 title: Project Templates
 type: reference
 status: draft
-confidence: 75
+confidence: 78
 tags: [claude-code, ai-agent, agents-md, hooks, nodejs]
-last-updated: 2026-04-12
+last-updated: 2026-04-19
 sources:
   - "Wiki-internal: synthesised from all wiki pages"
+  - "YouTube — A love letter to Pi | Lucas Meijer: https://www.youtube.com/watch?v=fdbXNWkpPMY"
 ---
 
 # Project Templates
@@ -23,6 +24,7 @@ sources:
 - Keep `AGENTS.md` as the shared core and `CLAUDE.md` as the thin Claude-specific layer.
 - Use hooks for deterministic enforcement and rules for path-scoped guidance.
 - Follow the simplest proving-slice workflow from the templates instead of broad first-pass rewrites.
+- Require a final human review pack after automated checks and before commit.
 - Implement the stack in stages so each layer is proven before the next is added.
 
 ## Use This Pattern
@@ -67,7 +69,7 @@ templates/
 ```
 AGENTS.md (~80 lines, shared by Claude + Codex)
   ├─ project context, stack, commands
-  ├─ workflow: simplest proving slice first, test immediately, commit each proving slice
+  ├─ workflow: simplest proving slice first, test immediately, prepare a review pack, commit each proving slice
   ├─ quality gates
   ├─ build order by stage
   └─ hard rules, naming, decision points
@@ -102,7 +104,8 @@ The intended development loop is:
 2. run the narrowest relevant test immediately
 3. fix failures before expanding scope
 4. run broader checks at slice boundaries
-5. commit each coherent passing slice
+5. prepare a short manual review pack: commands run, files changed, exact spot checks
+6. commit each coherent passing slice
 
 The intended expansion pattern is:
 
@@ -197,6 +200,7 @@ Global rules compete for attention with every other instruction. Path-scoped rul
 | Prompt on ambiguity | `pulumi up` gets `"ask"` (user confirms), not `"deny"` (blocked) |
 | Proving-slice workflow | Instructions explicitly prefer the simplest passing slice that proves the workflow |
 | Dummy-workflow-first | Templates tell agents to prove one toy happy path before generalizing |
+| Review handoff | Instructions require a review pack after automated checks and before commit |
 | Quality reminder | Stop hook checks for a recent passing slice, not just generic activity |
 
 ## Pitfalls
@@ -213,3 +217,4 @@ Global rules compete for attention with every other instruction. Path-scoped rul
 - [claude-md-conventions](claude-md-conventions.md)
 - [claude-code-hooks](claude-code-hooks.md)
 - [new-project-checklist](new-project-checklist.md)
+- [gitignore-best-practices](gitignore-best-practices.md)

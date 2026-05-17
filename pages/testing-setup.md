@@ -2,9 +2,9 @@
 title: Testing Setup for Node.js
 type: pattern
 status: draft
-confidence: 80
+confidence: 82
 tags: [nodejs, testing, jest, vitest, unit-test, integration-test]
-last-updated: 2026-04-12
+last-updated: 2026-04-19
 sources:
   - "Vitest docs: https://vitest.dev/"
   - "Vitest getting started guide: https://vitest.dev/guide/"
@@ -13,6 +13,7 @@ sources:
   - "Jest homepage: https://jestjs.io/"
   - "supertest README: https://github.com/ladjs/supertest"
   - "Playwright docs: https://playwright.dev/docs/intro"
+  - "YouTube — A love letter to Pi | Lucas Meijer: https://www.youtube.com/watch?v=fdbXNWkpPMY"
 ---
 
 # Testing Setup for Node.js
@@ -36,6 +37,7 @@ sources:
 - Enforce coverage in CI.
 - Keep Playwright as the top test layer, not the main fast-feedback layer.
 - Start with a small Playwright smoke suite and expand only for high-value user flows.
+- After the automated checks pass, prepare a short manual review pack before commit.
 - Commit after each coherent passing slice, not after a large batch of work.
 
 ## Use This Pattern
@@ -95,13 +97,20 @@ Recommended loop:
 2. run the smallest relevant test immediately
 3. fix failures before expanding the change
 4. run broader checks only at slice boundaries
-5. commit once the slice is green
+5. prepare a manual review pack after tests, lint, and build are green
+6. commit once the slice is green and easy to review
 
 Human-like expansion rule:
 
 1. get a dummy workflow working on one simplified case
 2. verify that case end to end
 3. only then generalize to more inputs, edge cases, and wider code areas
+
+Review-pack defaults:
+
+- backend or API change -> list files changed, exact command or request to replay, expected response
+- browser or UI change -> include screenshots and a short click path; add a demo clip for richer behavior
+- build or tooling change -> record the exact commands run and the warning or failure that should now be gone
 
 ## Commands / Config
 
@@ -139,6 +148,7 @@ Loop sizing rule:
 - Do not wait until the end of a large feature to run the first meaningful test.
 - Do not generalize a workflow across the codebase before one simple version works end to end.
 - Do not optimize for tiny slices that prove nothing; optimize for the simplest slice that proves the path works.
+- Do not stop at "tests passed" when the human still has to reconstruct how to review the slice.
 
 ## Related Pages
 

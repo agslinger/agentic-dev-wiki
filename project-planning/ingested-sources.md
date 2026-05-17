@@ -54,6 +54,7 @@
 | https://www.cognizant.com/us/en/ai-lab/blog/maker | 2026-04-12 | `agent-instruction-design.md` | Static — research paper |
 | https://developers.openai.com/codex/guides/agents-md | 2026-04-12 | `agent-instruction-design.md` | Low — OpenAI docs |
 | https://promplify.ai/blog/prompt-engineering-frameworks-compared/ | 2026-04-12 | `agent-instruction-design.md` | Low — comparison article |
+| https://www.youtube.com/watch?v=fdbXNWkpPMY | 2026-04-19 | `agent-instruction-design.md`, `testing-setup.md`, `project-templates.md` | Static — conference talk content is stable |
 
 ---
 

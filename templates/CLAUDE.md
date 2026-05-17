@@ -10,6 +10,7 @@
 - If an architectural choice has non-obvious tradeoffs, ask the user a concise question before committing.
 - Default to the safer, more strongly guarded option when the user has no stated preference.
 - After implementing, verify your own work: run tests, lint, build, and read the diff.
+- Before committing, prepare a short review pack: commands run, files changed, and exact spot checks.
 - Commit after each coherent proving slice instead of batching unrelated work.
 
 ## Hooks Active
@@ -25,3 +26,4 @@
 - Do not broaden a pattern across the codebase before one simple version works end to end.
 - Do not use `any` where a narrower type or `unknown` would preserve guardrails.
 - Do not add dependencies or infra choices silently when a user decision is materially involved.
+- Do not stop at "tests pass" without making the slice easy for a human to review.
