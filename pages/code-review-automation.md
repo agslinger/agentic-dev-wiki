@@ -4,7 +4,7 @@ type: tool
 status: draft
 confidence: 72
 tags: [cicd, github-actions, automation, ai-agent, code-review]
-last-updated: 2026-04-12
+last-updated: 2026-05-17
 sources:
   - "CodeRabbit configuration reference: https://docs.coderabbit.ai/reference/configuration"
   - "CodeRabbit review instructions guide: https://docs.coderabbit.ai/guides/review-instructions"
@@ -60,6 +60,7 @@ Minimal repo config should focus on:
 
 ## Related Pages
 
+- [agent-development-lifecycle](agent-development-lifecycle.md)
 - [claude-md-conventions](claude-md-conventions.md)
 - [cicd-github-actions](cicd-github-actions.md)
 - [testing-setup](testing-setup.md)

@@ -4,7 +4,7 @@ type: pattern
 status: draft
 confidence: 68
 tags: [nodejs, javascript, typescript]
-last-updated: 2026-04-12
+last-updated: 2026-05-17
 sources:
   - "React documentation: https://react.dev/"
   - "Community frontend bootstrap patterns"
@@ -67,6 +67,7 @@ Bootstrap docs should quickly answer:
 
 ## Related Pages
 
+- [html-prototyping-for-agent-review](html-prototyping-for-agent-review.md)
 - [nextjs-patterns](nextjs-patterns.md)
 - [react-tailwind-shadcn-ui](react-tailwind-shadcn-ui.md) — specific UI stack choice
 - [testing-setup](testing-setup.md)

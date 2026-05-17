@@ -4,7 +4,7 @@ type: pattern
 status: draft
 confidence: 82
 tags: [nodejs, typescript]
-last-updated: 2026-04-12
+last-updated: 2026-05-17
 sources:
   - "OpenAI models overview: https://platform.openai.com/docs/models"
   - "GPT-4o: https://platform.openai.com/docs/models/gpt-4o"
@@ -57,5 +57,6 @@ Use model splits deliberately:
 ## Related Pages
 
 - [postgres-pgvector](postgres-pgvector.md)
+- [pinecone-retrieval](pinecone-retrieval.md)
 - [vercel-ai-sdk](vercel-ai-sdk.md)
 - [claude-bedrock-models](claude-bedrock-models.md)

@@ -4,7 +4,7 @@ type: pattern
 status: draft
 confidence: 82
 tags: [nodejs, testing, jest, vitest, unit-test, integration-test]
-last-updated: 2026-04-19
+last-updated: 2026-05-17
 sources:
   - "Vitest docs: https://vitest.dev/"
   - "Vitest getting started guide: https://vitest.dev/guide/"
@@ -152,6 +152,7 @@ Loop sizing rule:
 
 ## Related Pages
 
+- [agent-development-lifecycle](agent-development-lifecycle.md)
 - [nextjs-testing](nextjs-testing.md) — Next.js-specific test stack (Vitest + Playwright)
 - [nodejs-patterns](nodejs-patterns.md)
 - [cicd-github-actions](cicd-github-actions.md)

@@ -4,7 +4,7 @@ type: tool
 status: draft
 confidence: 84
 tags: [nodejs, typescript]
-last-updated: 2026-04-12
+last-updated: 2026-05-17
 sources:
   - "AI SDK intro: https://ai-sdk.dev/docs/introduction"
 ---
@@ -56,4 +56,5 @@ Use it when the app needs:
 - [claude-bedrock-models](claude-bedrock-models.md)
 - [openai-model-selection](openai-model-selection.md)
 - [postgres-pgvector](postgres-pgvector.md) — embeddings generated via AI SDK stored here
+- [pinecone-retrieval](pinecone-retrieval.md) — managed retrieval escalation
 - [document-parsing-stack](document-parsing-stack.md) — parsed content flows to AI SDK

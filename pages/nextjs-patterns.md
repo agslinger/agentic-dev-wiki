@@ -4,7 +4,7 @@ type: pattern
 status: draft
 confidence: 78
 tags: [nodejs, javascript, typescript]
-last-updated: 2026-04-12
+last-updated: 2026-05-17
 sources:
   - "Next.js App Router getting started: https://nextjs.org/docs/app/getting-started"
   - "Next.js installation guide: https://nextjs.org/docs/app/getting-started/installation"
@@ -96,6 +96,7 @@ Useful bootstrap decisions to confirm early:
 
 ## Related Pages
 
+- [html-prototyping-for-agent-review](html-prototyping-for-agent-review.md)
 - [nextjs-testing](nextjs-testing.md) — Vitest + Playwright for Next.js
 - [react-tailwind-shadcn-ui](react-tailwind-shadcn-ui.md) — UI layer for Next.js apps
 - [testing-setup](testing-setup.md)

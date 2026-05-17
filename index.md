@@ -2,7 +2,7 @@
 
 Read this first. Use it to choose the smallest useful set of pages.
 
-Last updated: 2026-04-12
+Last updated: 2026-05-17
 
 ## How To Use This Index
 
@@ -25,6 +25,8 @@ Last updated: 2026-04-12
 | [claude-md-conventions](pages/claude-md-conventions.md) | Writing or restructuring `CLAUDE.md`, `AGENTS.md`, or `.claude/rules/` | draft | `claude-code` `ai-agent` `agents-md` |
 | [claude-code-hooks](pages/claude-code-hooks.md) | Adding Claude automation, guardrails, or local/shared hook configuration | draft | `claude-code` `ai-agent` `hooks` |
 | [agent-instruction-design](pages/agent-instruction-design.md) | Improving agent output quality, structuring instructions with RISEN, choosing RPI vs QRSPI workflow, enforcement pyramid | draft | `claude-code` `ai-agent` `agents-md` `llm` |
+| [agent-development-lifecycle](pages/agent-development-lifecycle.md) | Choosing RPI, QRSPI, CRISPY, prototypes, proving slices, and review packs for agent work | draft | `claude-code` `ai-agent` `agents-md` `llm` `code-review` |
+| [html-prototyping-for-agent-review](pages/html-prototyping-for-agent-review.md) | Creating disposable HTML prototypes before production UI edits | draft | `claude-code` `ai-agent` `code-review` `javascript` `typescript` |
 
 ## Node.js Application Patterns
 
@@ -45,6 +47,9 @@ Last updated: 2026-04-12
 | [claude-bedrock-models](pages/claude-bedrock-models.md) | Choosing between Claude Opus and Sonnet on Amazon Bedrock | draft | `nodejs` `typescript` |
 | [openai-model-selection](pages/openai-model-selection.md) | Splitting OpenAI models across extraction, synthesis, and embeddings | draft | `nodejs` `typescript` |
 | [document-parsing-stack](pages/document-parsing-stack.md) | Building a multi-format document ingestion pipeline | draft | `nodejs` `typescript` |
+| [composable-data-storage](pages/composable-data-storage.md) | Choosing roles for SQL, full-text, vector, graph, Git, object storage, and derived indexes | draft | `typescript` `ai-agent` `llm` |
+| [markdown-knowledge-webapp-architecture](pages/markdown-knowledge-webapp-architecture.md) | Building a web app over Markdown, Git, Obsidian, Postgres, graph, search, or RAG | draft | `typescript` `ai-agent` `llm` |
+| [pinecone-retrieval](pages/pinecone-retrieval.md) | Evaluating Pinecone after Postgres + pgvector retrieval is no longer enough | draft | `typescript` `ai-agent` `llm` |
 | [zod-4-validation](pages/zod-4-validation.md) | Validating runtime and AI-produced data with inferred TypeScript types | draft | `typescript` |
 | [biome](pages/biome.md) | Choosing one tool for formatting, linting, and import organization | draft | `linting` `formatting` `javascript` `typescript` |
 | [linting-setup](pages/linting-setup.md) | Adding linting, formatting, or pre-commit quality checks | draft | `nodejs` `linting` `eslint` `prettier` |

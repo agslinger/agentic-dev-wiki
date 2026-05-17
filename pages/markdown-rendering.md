@@ -53,5 +53,6 @@ Typical pattern:
 
 ## Related Pages
 
+- [markdown-knowledge-webapp-architecture](markdown-knowledge-webapp-architecture.md)
 - [react-tailwind-shadcn-ui](react-tailwind-shadcn-ui.md)
 - [nextjs-patterns](nextjs-patterns.md)

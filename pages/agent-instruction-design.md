@@ -4,13 +4,10 @@ type: concept
 status: draft
 confidence: 76
 tags: [claude-code, ai-agent, agents-md, llm]
-last-updated: 2026-04-19
+last-updated: 2026-05-17
 sources:
   - "Anthropic Claude Code best practices: https://code.claude.com/docs/en/best-practices"
   - "HumanLayer — writing a good CLAUDE.md: https://www.humanlayer.dev/blog/writing-a-good-claude-md"
-  - "Alex Lavaee — From RPI to QRSPI: https://alexlavaee.me/blog/from-rpi-to-qrspi/"
-  - "Patrick Robinson — RPI strategy: https://patrickarobinson.com/blog/introducing-rpi-strategy/"
-  - "Cognizant MAKER methodology: https://www.cognizant.com/us/en/ai-lab/blog/maker"
   - "OpenAI Codex AGENTS.md: https://developers.openai.com/codex/guides/agents-md"
   - "Promplify — prompt frameworks compared: https://promplify.ai/blog/prompt-engineering-frameworks-compared/"
   - "YouTube — A love letter to Pi | Lucas Meijer: https://www.youtube.com/watch?v=fdbXNWkpPMY"
@@ -37,8 +34,8 @@ Beyond this limit, adherence degrades **silently** — instructions get quietly 
 3. Enforce deterministic rules with **hooks and linters**, not instructions.
 4. Use **progressive disclosure** — point to docs, don't paste them.
 5. Decide **before the task starts** how a human will evaluate the result.
-6. Give the agent **verification plus a review pack** (tests, screenshots, manual review steps).
-7. Use **RPI or QRSPI** as the task workflow, not as CLAUDE.md content.
+6. Tell the agent which verification and review artifacts are expected.
+7. Link to task workflow guidance instead of embedding lifecycle detail in `CLAUDE.md`.
 
 ## Use This Pattern
 
@@ -63,8 +60,8 @@ src/ for app, infra/ for Pulumi. Separate package.json each.
 
 # Workflow
 - Run `npm test` after code changes
-- Run `npm run lint` before preparing the review pack
-- End each task with a short review pack: commands run, files changed, exact spot checks
+- Run `npm run lint` before handoff
+- End each task with a short handoff summary
 - Use plan mode for changes touching >3 files
 
 # Quality gates
@@ -100,10 +97,10 @@ Default handoff pattern after automated checks:
 
 1. run the narrowest relevant tests during implementation
 2. run broader checks at the slice boundary
-3. prepare a short review pack before commit
+3. prepare a short handoff summary before commit
 4. commit only after the slice is both green and easy to inspect manually
 
-Good review-pack defaults:
+Good handoff defaults:
 
 - backend or API change -> files changed, commands run, exact request to replay, expected behavior
 - UI change -> screenshots plus a short click path; add a demo clip for richer motion or state changes
@@ -111,47 +108,11 @@ Good review-pack defaults:
 
 After the run, review the transcript or trace for avoidable detours. Use those detours to tighten docs, commands, and repo instructions.
 
-## Methodologies for Agent Workflow
+## Workflow Boundary
 
-These are not CLAUDE.md content — they describe how the agent should approach tasks. Embed them via skills or plan-mode habits.
+Keep `CLAUDE.md` focused on project rules, commands, and quality gates.
 
-### RPI (Research, Plan, Implement)
-
-Origin: HumanLayer / Patrick Robinson. Three phases with validation gates:
-
-| Phase | Action | Validation |
-|---|---|---|
-| **Research** | Read codebase, ask clarifying questions | FAR: Factual, Actionable, Relevant |
-| **Plan** | Create atomic checkbox tasks | FACTS: Feasible, Atomic, Clear, Testable, Scoped |
-| **Implement** | Execute plan step-by-step | Tests pass, lint clean |
-
-Good for: feature work, bug fixes, well-scoped tasks.
-
-### QRSPI (Questions, Research, Design, Structure, Plan, Implement, PR)
-
-Origin: Alex Lavaee. Evolved from RPI to fix three failures at scale:
-
-| RPI failure | QRSPI fix |
-|---|---|
-| Instruction budget overflow (85+ instructions) | Distribute alignment across 5 phases; each carries fewer directives |
-| Magic words dependency | Design Discussion validates understanding by default |
-| Plan-reading illusion (plans read well but contain false assumptions) | Research phase hides the ticket; produces only facts |
-
-Key phases:
-- **Research**: Agent maps codebase without seeing the feature ticket — prevents premature opinions
-- **Design Discussion**: ~200-line markdown of current state → desired state → design choices. Engineer reviews and redirects ("brain surgery") before coding starts
-- **Structure Outline**: Signatures and types defined (like C header files)
-
-Good for: architectural changes, multi-file features, unfamiliar codebases.
-
-### MAKER (Maximal Agentic Decomposition, K-threshold, Red-flagging)
-
-Origin: Cognizant AI Lab. Not a prompt framework — a reliability architecture:
-- Decompose tasks into millions of atomic micro-steps
-- Vote across distributed agents for accuracy
-- Auto-discard confused outputs before voting
-
-Achieved 1M+ steps with zero errors. Takeaway for CLAUDE.md: **atomic task decomposition** is the path to reliability.
+Task lifecycle choices belong in [agent-development-lifecycle](agent-development-lifecycle.md).
 
 ## The Enforcement Pyramid
 
@@ -177,13 +138,14 @@ Useful defaults to encode:
 - move deterministic behavior into hooks and CI
 - move path-specific guidance into `.claude/rules/`
 - require verification steps like tests or screenshots before completion
-- require a short review pack after automated checks and before commit
+- require a short handoff summary after automated checks and before commit
 - tell the agent how a human will manually inspect the slice
 - use transcript reviews to fix stale docs, noisy warnings, and missing commands
+- link to [agent-development-lifecycle](agent-development-lifecycle.md) for task workflow selection
 
 ## Context Management
 
-From QRSPI and Anthropic's own guidance:
+Context guidance:
 
 - Keep context utilization under **40%**; start fresh sessions at **60%**
 - Use `/clear` between unrelated tasks
@@ -205,6 +167,8 @@ From QRSPI and Anthropic's own guidance:
 
 ## Related Pages
 
+- [agent-development-lifecycle](agent-development-lifecycle.md)
+- [html-prototyping-for-agent-review](html-prototyping-for-agent-review.md)
 - [claude-md-conventions](claude-md-conventions.md)
 - [claude-code-hooks](claude-code-hooks.md)
 - [code-review-automation](code-review-automation.md)

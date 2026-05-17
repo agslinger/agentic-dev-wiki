@@ -54,6 +54,9 @@ Common pgvector usage patterns:
 
 ## Related Pages
 
+- [composable-data-storage](composable-data-storage.md)
+- [markdown-knowledge-webapp-architecture](markdown-knowledge-webapp-architecture.md)
+- [pinecone-retrieval](pinecone-retrieval.md)
 - [drizzle-orm](drizzle-orm.md)
 - [openai-model-selection](openai-model-selection.md)
 - [vercel-ai-sdk](vercel-ai-sdk.md)

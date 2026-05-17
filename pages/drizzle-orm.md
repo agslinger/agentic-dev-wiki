@@ -4,7 +4,7 @@ type: tool
 status: draft
 confidence: 84
 tags: [typescript]
-last-updated: 2026-04-12
+last-updated: 2026-05-17
 sources:
   - "Drizzle overview: https://orm.drizzle.team/docs/overview"
   - "Drizzle RLS docs: https://orm.drizzle.team/docs/rls"
@@ -55,4 +55,5 @@ Typical Drizzle use:
 
 - [typescript-strict-mode](typescript-strict-mode.md)
 - [postgres-pgvector](postgres-pgvector.md)
+- [composable-data-storage](composable-data-storage.md)
 - [zod-4-validation](zod-4-validation.md)

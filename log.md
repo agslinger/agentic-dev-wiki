@@ -5,6 +5,45 @@ Append-only chronological record of all operations. Format:
 
 Operations: `ingest` | `query` | `lint` | `bootstrap` | `create`
 
+## [2026-05-17] lint | Deduplicate linked wiki guidance
+
+Reviewed the newly promoted pages and their linked neighbors for ownership overlap.
+
+**Files updated:**
+- `pages/agent-instruction-design.md` — removed duplicated lifecycle-methodology detail and linked to the lifecycle owner
+- `pages/composable-data-storage.md` — kept broad data-shape routing; moved Markdown-specific schema ownership to the Markdown architecture page
+- `pages/markdown-knowledge-webapp-architecture.md` — clarified that its tables are Markdown-serving tables
+- `pages/pinecone-retrieval.md` — clarified that broad store selection lives in composable storage
+- `pages/project-templates.md` — shortened repeated proving-slice guidance and linked to lifecycle guidance
+- Linked adjacent frontend, testing, review, data, and AI pages to the new canonical owners
+
+Validation:
+- `pwsh ./scripts/wiki-lint.ps1` passed.
+
+## [2026-05-17] ingest | Promote planning research into canonical wiki pages
+
+Implemented the reusable guidance from the planning research briefs.
+
+**Files created:**
+- `pages/agent-development-lifecycle.md`
+- `pages/html-prototyping-for-agent-review.md`
+- `pages/composable-data-storage.md`
+- `pages/markdown-knowledge-webapp-architecture.md`
+- `pages/pinecone-retrieval.md`
+
+**Files updated:**
+- `index.md`
+- `pages/agent-instruction-design.md`
+- `pages/postgres-pgvector.md`
+- `pages/markdown-rendering.md`
+- `pages/document-parsing-stack.md`
+- `planning/ingested-sources.md`
+
+Notes:
+- Kept planning files as working material.
+- Verified current Pinecone status from official docs/search results before adding fast-moving retrieval notes.
+- Updated the source ledger for the promoted planning sources.
+
 ## [2026-04-19] create | Add Obsidian-style graph viewer plan
 
 Added a short repo-specific plan for building a public HTML wiki graph viewer with an Obsidian-like feel.

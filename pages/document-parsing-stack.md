@@ -55,6 +55,8 @@ Key design rule:
 
 ## Related Pages
 
+- [markdown-knowledge-webapp-architecture](markdown-knowledge-webapp-architecture.md)
+- [composable-data-storage](composable-data-storage.md)
 - [zod-4-validation](zod-4-validation.md)
 - [openai-model-selection](openai-model-selection.md)
 - [postgres-pgvector](postgres-pgvector.md) — parsed content stored with embeddings
